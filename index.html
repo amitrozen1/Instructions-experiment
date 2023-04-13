@@ -94,7 +94,7 @@
         }
         else {
             var mapping = 'sk'
-            var manipulation_condition = true
+            var manipulation_condition = false
         }
 
         var practice_leaves_images = ['images/practice/1p.jpg', 'images/practice/2p.jpg', 'images/practice/3p.jpg', 'images/practice/4p.jpg']
@@ -108,7 +108,7 @@
         var fixation = '<div class="fixation">+</div>'
         var preload = {
             type: jsPsychPreload,
-            images: practice_leaves_image, practice_deck_images, test_leaves_images, test_deck_images, reward_images, example_images
+            images: practice_leaves_images, practice_deck_images, test_leaves_images, test_deck_images, reward_images
         };
 
         /*---------------------------------------------------- 
@@ -129,7 +129,7 @@
                     + " If no extra money will be earned in the card game, you will still get £2.5 for completing this session of the study."
                     + " However, <b>you can gain up to an extra £0.9 based on winnings in the game.</b></p>",
     
-                "<p style='text-align:left'> We will now provide instructions regarding the card game. Please read them carefully. <br>"
+                "<p style='text-align:left'> We will now provide instructions regarding the leaves game. Please read them carefully. <br>"
                 + "Feel free to go back and forth between the screens.</p> "
                 + "<p style='text-align:left'>At the end of the instructions, <b>we will ask you to complete a short quiz about them</b>, to make sure everything is well understood.</p>",
     
@@ -141,7 +141,7 @@
                 + " <br><br><u>Please do your best to respond as fast and accurate as you can.</u><br><br>"
                 + "<img class='example' src='images/example_leaves.jpg' >",
     
-                "<p style='text-align:left'>After picking up the leaf, the tree will reward you based on the color of the leaf you choose. The outcome will be shown in the center of the screen, as seen below.<br><br>"
+                "<p style='text-align:left'>After picking up the leaf, the tree will reward you based on the color of the leaf you chose. The outcome will be shown in the center of the screen, as seen below.<br><br>"
                 + "<b>Winning very much depends on the color of the chosen leaf.</b><br>"
                 + "Because the tree prefers some leaf colors over others, certain leaf colors are more valuable than others.</p>"
                 + "<br> <img class='example' src='images/reward_example_leaves.jpg'>",
@@ -186,44 +186,6 @@
         show_clickable_nav: true
     };
     
-        var instructions_cards = {
-            on_start: function () {
-                if (document.querySelector('#cursor-toggle') != null) {
-                    document.querySelector('#cursor-toggle').remove()
-                }
-            },
-            type: jsPsychInstructions,
-            pages: ["<p><b><u>Welcome to the leaves game</u></b></p>"
-                + "<p style='text-align:left'>Your winnings in this game will earn you additional payment bonus for the study."
-                + " If no extra money will be earned in the card game, you will still get £2.5 for completing this session of the study."
-                + " However, <b>you can gain up to an extra £0.9 based on winnings in the game.</b></p>",
-
-            "<p style='text-align:left'> We will now provide instructions regarding the card game. Please read them carefully. <br>"
-            + "Feel free to go back and forth between the screens.</p> "
-            + "<p style='text-align:left'>At the end of the instructions, <b>we will ask you to complete a short quiz about them</b>, to make sure everything is well understood.</p>",
-
-            "<p style='text-align:left'> In our garden, there is an ancient tree whose leaves yield money.<br>"
-                + "The tree is quite large and has many different colored leaves. Below is an example of four leaves, very much like the leaves in the game to follow.</p>" +
-            "<img class='group' src='images/group_leaves.jpg' >",
-
-            "<p> A pair of leaves may occasionally fall from the tree (as shown in the example below), and you will be able to pick up one of the falling leaves.<br> You may choose the <b>left leaf by pressing 's'</b> on your keyboard and the <b>right leaf by pressing 'k'</b>."
-            + " <br><br><u>Please do your best to respond as fast and accurate as you can.</u><br><br>"
-            + "<img class='example' src='images/example_leaves.jpg' >",
-
-            "<p style='text-align:left'>After picking up the leaf, the tree will reward you based on the color of the leaf you choose. The outcome will be shown in the center of the screen, as seen below.<br><br>"
-            + "<b>Winning very much depends on the color of the chosen leaf.</b><br>"
-            + "Because the tree prefers some leaf colors over others, certain leaf colors are more valuable than others.</p>"
-            + "<br> <img class='example' src='images/reward_example_leaves.jpg'>",
-
-            "<p style='text-align:left'>Your task is to find out which of the falling leaves is the best at any given time and select it."
-            +"<br><br> <b>Please note that the winning chances of the leaves are independent</b>.<br> Learning about one leaf does not tell you anything about other leaves.</p>",
-
-            "<p style='text-align:left'><u>Three important things to remember:</u><br>"
-            + "1. The colors that the tree likes change over time, <b>thus how good a leaf is can change along with the game.</b>"
-            + "<br><br>2. <b>Winning very much depends on the color of the chosen leaf</b>. This is a stormy day with strong winds. As a result, the wind can blow a leaf to the right or left, yet the leaf's position has no effect on the odds of winning. Also, the key you choose to to pick the leaf off the ground has no effect on your odds of winning.<br><br>"
-            + " 3. <b>The possibility of getting money from a certain leaf has nothing to do with the other leaves - </b> you cannot learn about one leaf from the money rewards you got for the other.</p>"],
-            show_clickable_nav: true
-        };
         
         var start_instructions_test = {
             on_start: function () {
@@ -247,8 +209,7 @@
             type: jsPsychSurveyMultiChoice,
             questions: function(){
                 if (manipulation_condition == true){
-                    return 
-                    [
+                    return [
                     { prompt: "How many leaves fall down from the tree each time?", name: 'leaves_step', correct: '2', options: Q1_2_options, required: true },
                     { prompt: "How do you pick a leaf?", name: 'choose_leaf', correct: 'Press the ‘S’ or ‘K’ key with your LEFT or RIGHT hand.', options: Q3_options, required: true },
                     { prompt: "Some leaf colors are better than others.", name: 'better_leaves', correct: 'True', options: Q5_6_options, required: true },
@@ -257,8 +218,7 @@
                     { prompt: "If one leaf leads you to more money, it means the other leaves will probably lead you to less money ", name: 'leaves_value_independence', correct: 'False', options: Q8_options, required: true },
                     { prompt: "If you use the RIGHT and not the LEFT response keys, you might win more", name: 'leaves_location_value', correct: "False - you won't win more or less using RIGHT or LEFT response keys. Only the leaf colors are related to your chance of winning.", options: Q9_options_leaves, required: true },
                 ]}
-            else{ return
-                [
+            else{ return [
                 { prompt: "What is the size of a card deck?", name: 'deck_size', correct: '4', options: Q1_2_options, required: true },
                 { prompt: "How many cards are presented on each step?", name: 'cards_step', correct: '2', options: Q1_2_options, required: true },
                 { prompt: "How do you choose a card?", name: 'choose_card', correct: 'Press the ‘S’ or ‘K’ key with your LEFT or RIGHT hand.', options: Q3_options, required: true },
@@ -331,7 +291,7 @@
          var confirm_cards1 = {
             type: jsPsychHtmlKeyboardResponse,
             stimulus: function () {
-                return draw_show_cards(test_leaves_images)
+                return draw_show_cards(images_for_block_start())
             },
             choices: "NO_KEYS",
             trial_duration: 1500,
@@ -358,10 +318,10 @@
             on_finish: function (data) {
                 data.key_selected = selected
                 if (selected == 0) {
-                    data.card_selected = practice_deck_images.indexOf(left_card)
+                    data.card_selected = images_for_block_start().indexOf(left_card)
                 }
                 else if (selected == 1) {
-                    data.card_selected = practice_deck_images.indexOf(right_card)
+                    data.card_selected = images_for_block_start().indexOf(right_card)
                 }
             }
         }
@@ -733,8 +693,7 @@
             stimulus: function () {
                 if (manipulation_condition == true){
                 return '<p><b><u>Test block ' + (block + 1) + ' out of ' + (blocks + 1) + '</u></b></p>' + '<p style="text-align: left"> You will now start a test block. Below are the four cards that can appear in this round.</p>'
-                    + '<p style="text-align: left">Use the LEFT or RIGHT response keys (‘s’ or ‘k’, in correspondence) to make your selection. <br> </p>'
-                    +'<br><p style= "text-align: left" font-size: 40px;> Remenber, <b>the position of the leaf and the key you choose to pick the leaf has no effect on the odds of winning.</b></p>'
+                    +'<br><p style= "text-align: left" font-size: 40px;> Remember, <b>the position of the leaf and the key you choose to pick the leaf has no effect on the odds of winning.</b></p>'
                     + '<p><b>Press SPACE to start</b></p>'
                     + '<img src="' + images_for_block_start()[0] + '">  ' + '<img src="' + images_for_block_start()[1] + '">    ' + '<img src="' + images_for_block_start()[2]
                     + '">    ' + '<img src="' + images_for_block_start()[3] + '">  '
@@ -870,13 +829,9 @@
         var finish_block = {
             type: jsPsychHtmlKeyboardResponse,
             stimulus: function () {
-                finish_block_string = '<p>Good job!</p>' + '<p style="text-align: left"><br> Test block ' + (block + 1) + ' out of ' + (blocks + 1) + ' is over.'
+                finish_block_string = '<p>Good job!</p>' + '<p style="text-align: left"><br> Test block ' + (block + 1) + ' out of ' + (blocks) + ' is over.'
                 if (block != 3) {
-                    finish_block_string += ' You can take a short break while sitting in front of the screen, if needed.</p>'
-                    if (manipulation_condition == true){
-                        finish_block_string += '<br><p style= font-size: 40px;><b> Remenber, the position of the leaf and the key you choose to pick the leaf has no effect on the odds of winning.</b></p>'
-                    }
-                    finish_block_string += '<p> <br><br><br><b>Press SPACE to continue</b>  </p>'
+                    finish_block_string += ' You can stretch a little and take a short break while sitting in front of the screen, if needed.</p><p> <br><br><br><b>Press SPACE to continue</b>  </p>'
                 }
                 else {
                     finish_block_string += ' We will now continue to answer some questions.</p><p> <br><br><br><b>Press SPACE to continue</b>  </p>'
@@ -894,7 +849,7 @@
         /*---------------------------------------------------- 
         Define timeline for card part
         ------------------------------------------------------*/
-        var demo_procedure_only_cards = {
+        var demo_procedure = {
             timeline: [fixation_cards, practice_cards1, practice_choice1, practice_reward1, fixation_cards, practice_cards2, practice_choice2, practice_reward2],
             repetitions: 1 //every trial takes 500+200+2*(900+1500+500+750)+1500+500 =10 sec per trial, 6 trials = 60 sec
         }
@@ -912,18 +867,7 @@
 
 
         var instructions_loop = {
-            timeline: [instructions, start_practice_only_cards, demo_procedure_only_cards, start_instructions_test, instructions_test, check_answers],
-            loop_function: function () {
-                if (to_repeat == true) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-        }
-
-        var instructions_loop_leaves = {
-            timeline: [instructions, start_practice_only_cards, demo_procedure_only_cards, start_instructions_test, instructions_test, check_answers],
+            timeline: [instructions, start_practice_only_cards, demo_procedure, start_instructions_test, instructions_test, check_answers],
             loop_function: function () {
                 if (to_repeat == true) {
                     return true;
@@ -942,8 +886,21 @@
             repetitions: 3
         };
 
+    //    var full_procedure = {
+    //        timeline: function(){
+    //            if (manipulation_condition == true){
+    //                return [preload, instructions_loop, confirm_loop, if_confirm, start_exp_cards, test_blocks]
+    //            }
+    //            else{
+    //                return [preload, instructions_loop, start_exp_cards, test_blocks] //instructions+test takes 180sec 
+    //            }
+    //        }
+  //      }
+//
+        //timeline.push(full_procedure)
+
         var full_procedure_leaves = {
-            timeline: [preload, instructions_loop, confirm_loop, if_confirm, start_exp_leaves, test_blocks]
+            timeline: [preload, instructions_loop, confirm_loop, if_confirm, start_exp_cards, test_blocks]
         } //instructions+test takes 180sec 
 
         var full_procedure_cards = {
