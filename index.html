@@ -94,7 +94,7 @@
         }
         else {
             var mapping = 'sk'
-            var manipulation_condition = false
+            var manipulation_condition = true
         }
 
         var practice_leaves_images = ['images/practice/1p.jpg', 'images/practice/2p.jpg', 'images/practice/3p.jpg', 'images/practice/4p.jpg']
@@ -126,7 +126,7 @@
                 if (manipulation_condition == true){
                     return ["<p><b><u>Welcome to the leaves game</u></b></p>"
                     + "<p style='text-align:left'>Your winnings in this game will earn you additional payment bonus for the study."
-                    + " If no extra money will be earned in the card game, you will still get £2.5 for completing this session of the study."
+                    + " If no extra money will be earned in the leaves game, you will still get £2.5 for completing this session of the study."
                     + " However, <b>you can gain up to an extra £0.9 based on winnings in the game.</b></p>",
     
                 "<p style='text-align:left'> We will now provide instructions regarding the leaves game. Please read them carefully. <br>"
@@ -137,21 +137,21 @@
                     + "The tree is quite large and has many different colored leaves. Below is an example of four leaves, very much like the leaves in the game to follow.</p>" +
                 "<img class='group' src='images/group_leaves.jpg' >",
     
-                "<p> A pair of leaves may occasionally fall from the tree (as shown in the example below), and you will be able to pick up one of the falling leaves.<br> You may choose the <b>left leaf by pressing 's'</b> on your keyboard and the <b>right leaf by pressing 'k'</b>."
+                "<p> A pair of leaves may occasionally fall down from the tree (as shown in the example below), and you will be required to pick up one of the falling leaves.<br> You may choose the <b>left leaf by pressing 's'</b> on your keyboard and the <b>right leaf by pressing 'k'</b>."
                 + " <br><br><u>Please do your best to respond as fast and accurate as you can.</u><br><br>"
                 + "<img class='example' src='images/example_leaves.jpg' >",
     
-                "<p style='text-align:left'>After picking up the leaf, the tree will reward you based on the color of the leaf you chose. The outcome will be shown in the center of the screen, as seen below.<br><br>"
+                "<p style='text-align:left'>After choosing one leaf, the tree will reward you based on the color of the leaf you chose. The outcome will be shown in the center of the screen, as seen below.<br><br>"
                 + "<b>Winning very much depends on the color of the chosen leaf.</b><br>"
                 + "Because the tree prefers some leaf colors over others, certain leaf colors are more valuable than others.</p>"
                 + "<br> <img class='example' src='images/reward_example_leaves.jpg'>",
     
                 "<p style='text-align:left'>Your task is to find out which of the falling leaves is the best at any given time and select it."
-                +"<br><br> <b>Please note that the winning chances of the leaves are independent</b>.<br> Learning about one leaf does not tell you anything about other leaves.</p>",
+                +"<br><br> <b>Please note that the winning chances of the leaves are independent</b>- <br> Learning about one leaf does not tell you anything about other leaves.</p>",
     
                 "<p style='text-align:left'><u>Three important things to remember:</u><br>"
-                + "1. The colors that the tree likes change over time, <b>thus how good a leaf is can change along with the game.</b>"
-                + "<br><br>2. <b>Winning very much depends on the color of the chosen leaf</b>. This is a stormy day with strong winds. As a result, the wind can blow a leaf to the right or left, yet the leaf's position has no effect on the odds of winning. Also, the key you choose to to pick the leaf off the ground has no effect on your odds of winning.<br><br>"
+                + "1. Over time, the colors that the tree likes most change, which means that <b>how good a leaf is can change along with the game.</b>"
+                + "<br><br>2. <b>Winning very much depends on the color of the chosen leaf</b>. Today is a stormy day with strong winds. As a result, the wind can blow a leaf to the right or left, yet the leaf's position has no effect on the odds of winning. Also, the key you choose to pick the leaf off the ground has no effect on your odds of winning.<br><br>"
                 + " 3. <b>The possibility of getting money from a certain leaf has nothing to do with the other leaves - </b> you cannot learn about one leaf from the money rewards you got for the other.</p>"]
                 }
 
@@ -280,10 +280,10 @@
                 }
             },
             type: jsPsychInstructions,
-            pages: ["<p style='text-align:left'>We would like to test you on a real game step before you start the real game to ensure you understand the essence of the game.",
+            pages: ["<p style='text-align:left'> Before you start the real game, we would like to test you on a real game step to ensure you understand the essence of the game.",
 
-            "<p style='text-align:left'> You will first watch a single game step, you won't be required to react.<br> Two cards will be displayed for a few seconds. Then, one card will be selected and an outcome will be displayed accordingly. </p> <br>"
-            + "<p style='text-align:left'>After witnessing the choice, a new pair of cards will be presented to you. You will be required to choose <b>the best course of action</b>, in your opinion, from a set of options that will be presented to you.</p> ",],
+            "<p style='text-align:left'> You will start by watching a single game step without needing to respond.<br> Two leaves will be displayed for a few seconds. Then, one will be selected and an outcome will be displayed accordingly. </p> <br>"
+            + "<p style='text-align:left'>After witnessing the choice, a new pair of leaves will be presented to you. You will be required to choose <b>the best course of action</b>, in your opinion, from a set of options that will be presented to you.</p> ",],
             show_clickable_nav: true
         };
         
@@ -347,7 +347,7 @@
                 }
             },
             type: jsPsychInstructions,
-            pages: ["<p style='text-align:left'>You will now be presented with a pair of cards.<br> Please consider them carefully and select the best course of action from the following options:<br>"
+            pages: ["<p style='text-align:left'>You will now be presented with a pair of leaves.<br> Please consider them carefully and select the best course of action from the following options:<br>"
                 + "1. left card<br>"
                 + "2. right card<br>"
                 + "3. It doesn't matter because they are both equal to me<br>",],
@@ -369,7 +369,7 @@
             data: { phase: 'understanding confirmation', trial_name: 'cards2', trial_num: function () { return current_cards_practice_trial } }
         }
 
-        var confirm_options = ["left card", "right card", "It doesn't matter because they are both equal to me"];
+        var confirm_options = ["left leaf", "right leaf", "It doesn't matter because they are both equal to me"];
 
         var confirm_test = {
             type: jsPsychSurveyMultiChoice,
