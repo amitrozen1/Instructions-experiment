@@ -26,13 +26,7 @@
 
         var jsPsych = initJsPsych({
             on_finish: function () {
-                // This all part is not used in this experiment (showing participants their bonus and capacity)
-                /*calculate accuracy in squares part of cards game */
-                var correct_test_squares = jsPsych.data.get().filter({ phase: 'exp', trial_name: 'test_cards' }).select('is_correct').sum()
-                var total_test_squares = jsPsych.data.get().filter({ phase: 'exp', trial_name: 'test_cards' }).select('is_correct').count()
-                var test_squares_cards_accuracy = correct_test_squares / total_test_squares;
-                var test_squares_cards_accuracy = test_squares_cards_accuracy.toFixed(2)
-                localStorage.accuracy = test_squares_cards_accuracy; //accuracy to show
+                
                 /*calculate bonus */
                 var number_of_reward1 = jsPsych.data.get().filter({ phase: 'exp', trial_name: 'reward1' }).select('reward').sum()
                 var number_of_reward2 = jsPsych.data.get().filter({ phase: 'exp', trial_name: 'reward2' }).select('reward').sum()
@@ -105,10 +99,28 @@
         var test_deck_images = ['images/card deck 2/5.jpg', 'images/card deck 2/6.jpg', 'images/card deck 2/7.jpg', 'images/card deck 2/8.jpg', 'images/card deck 3/9.jpg', 'images/card deck 3/10.jpg', 'images/card deck 3/11.jpg', 'images/card deck 3/12.jpg'
             , 'images/card deck 4/13.jpg', 'images/card deck 4/14.jpg', 'images/card deck 4/15.jpg', 'images/card deck 4/16.jpg']
         var reward_images = ['images/zero_coins.png', 'images/won1-no-back1.png']
+        var instructions_images = ['images/group_leaves.jpg', 'images/example_leaves.jpg', 'images/reward_example_leaves.jpg', 'images/group.jpg', 'images/example.jpg', 'images/reward_example.jpg']
         var fixation = '<div class="fixation">+</div>'
+        var catch_trial_images = ['images/surprise box/1.jpg', 'images/surprise box/2.jpg', 'images/surprise box/3.jpg', 'images/surprise box/4.jpg', 'images/surprise box/5.jpg', 'images/surprise box/6.jpg', 'images/surprise box/7.jpg', 'images/surprise box/8.jpg', 'images/surprise box/9.jpg', 'images/surprise box/10.jpg', 
+        'images/surprise box/11.jpg', 'images/surprise box/12.jpg', 'images/surprise box/13.jpg', 'images/surprise box/14.jpg', 'images/surprise box/15.jpg', 'images/surprise box/16.jpg', 'images/surprise box/17.jpg', 'images/surprise box/18.jpg', 'images/surprise box/19.jpg', 'images/surprise box/20.jpg', 
+        'images/surprise box/21.jpg', 'images/surprise box/22.jpg', 'images/surprise box/23.jpg', 'images/surprise box/24.jpg', 'images/surprise box/25.jpg', 'images/surprise box/26.jpg', 'images/surprise box/27.jpg', 'images/surprise box/28.jpg', 'images/surprise box/29.jpg', 'images/surprise box/30.jpg',
+        'images/surprise box/new_1.jpg', 'images/surprise box/new_2.jpg', 'images/surprise box/new_3.jpg', 'images/surprise box/new_4.jpg', 'images/surprise box/new_5.jpg', 'images/surprise box/new_6.jpg', 'images/surprise box/new_7.jpg', 'images/surprise box/new_8.jpg', 'images/surprise box/new_9.jpg', 'images/surprise box/new_10.jpg', 
+        'images/surprise box/new_11.jpg', 'images/surprise box/new_12.jpg', 'images/surprise box/new_13.jpg', 'images/surprise box/new_14.jpg', 'images/surprise box/new_15.jpg', 'images/surprise box/new_16.jpg', 'images/surprise box/new_17.jpg', 'images/surprise box/new_18.jpg', 'images/surprise box/new_19.jpg', 'images/surprise box/new_20.jpg', 
+        'images/surprise box/new_21.jpg', 'images/surprise box/new_22.jpg', 'images/surprise box/new_23.jpg', 'images/surprise box/new_24.jpg', 'images/surprise box/new_25.jpg', 'images/surprise box/new_26.jpg', 'images/surprise box/new_27.jpg', 'images/surprise box/new_28.jpg', 'images/surprise box/new_29.jpg', 'images/surprise box/new_30.jpg', 
+        'images/surprise box/new_31.jpg', 'images/surprise box/new_32.jpg', 'images/surprise box/new_33.jpg', 'images/surprise box/new_34.jpg', 'images/surprise box/new_35.jpg', 'images/surprise box/new_36.jpg', 'images/surprise box/new_37.jpg', 'images/surprise box/new_38.jpg', 'images/surprise box/new_39.jpg', 'images/surprise box/new_40.jpg', 
+        'images/surprise box/new_41.jpg', 'images/surprise box/new_42.jpg', 'images/surprise box/new_43.jpg', 'images/surprise box/new_44.jpg', 'images/surprise box/new_45.jpg', 'images/surprise box/new_46.jpg', 'images/surprise box/new_47.jpg', 'images/surprise box/new_48.jpg', 'images/surprise box/new_49.jpg', 'images/surprise box/new_50.jpg', 
+        'images/surprise box/new_51.jpg', 'images/surprise box/new_52.jpg', 'images/surprise box/new_53.jpg', 'images/surprise box/new_54.jpg', 'images/surprise box/new_55.jpg', 'images/surprise box/new_56.jpg', 'images/surprise box/new_57.jpg', 'images/surprise box/new_58.jpg', 'images/surprise box/new_59.jpg', 'images/surprise box/new_60.jpg', 
+        'images/surprise box/new_61.jpg', 'images/surprise box/new_62.jpg', 'images/surprise box/new_63.jpg', 'images/surprise box/new_64.jpg', 'images/surprise box/new_65.jpg', 'images/surprise box/new_66.jpg', 'images/surprise box/new_67.jpg', 'images/surprise box/new_68.jpg', 'images/surprise box/new_69.jpg', 'images/surprise box/new_70.jpg' , 
+        'images/surprise box/new_71.jpg' , 'images/surprise box/new_72.jpg' , 'images/surprise box/new_73.jpg' , 'images/surprise box/new_74.jpg' , 'images/surprise box/new_75.jpg' , 'images/surprise box/new_76.jpg' , 'images/surprise box/new_77.jpg' , 'images/surprise box/new_78.jpg' , 'images/surprise box/new_79.jpg' , 'images/surprise box/new_80.jpg' , 
+        'images/surprise box/new_81.jpg' , 'images/surprise box/new_82.jpg' , 'images/surprise box/new_83.jpg' , 'images/surprise box/new_84.jpg' , 'images/surprise box/new_85.jpg' , 'images/surprise box/new_86.jpg' , 'images/surprise box/new_87.jpg' , 'images/surprise box/new_88.jpg' , 'images/surprise box/new_89.jpg' , 'images/surprise box/new_90.jpg' , 
+        'images/surprise box/new_91.jpg' , 'images/surprise box/new_92.jpg' , 'images/surprise box/new_93.jpg' , 'images/surprise box/new_94.jpg' , 'images/surprise box/new_95.jpg' , 'images/surprise box/new_96.jpg' , 'images/surprise box/new_97.jpg' , 'images/surprise box/new_98.jpg' , 'images/surprise box/new_99.jpg' , 'images/surprise box/new_100.jpg' , 
+        'images/surprise box/new_101.jpg' , 'images/surprise box/new_102.jpg' , 'images/surprise box/new_103.jpg' , 'images/surprise box/new_104.jpg' , 'images/surprise box/new_105.jpg' , 'images/surprise box/new_106.jpg' , 'images/surprise box/new_107.jpg' , 'images/surprise box/new_108.jpg' , 'images/surprise box/new_109.jpg' , 'images/surprise box/new_110.jpg' , 
+        'images/surprise box/new_111.jpg' , 'images/surprise box/new_112.jpg' , 'images/surprise box/new_113.jpg' , 'images/surprise box/new_114.jpg' , 'images/surprise box/new_115.jpg' , 'images/surprise box/new_116.jpg' , 'images/surprise box/new_117.jpg' , 'images/surprise box/new_118.jpg' , 'images/surprise box/new_119.jpg' , 'images/surprise box/new_120.jpg' , 
+        'images/surprise box/new_121.jpg' , 'images/surprise box/new_122.jpg' , 'images/surprise box/new_123.jpg' , 'images/surprise box/new_124.jpg' , 'images/surprise box/new_125.jpg' , 'images/surprise box/new_126.jpg' , 'images/surprise box/new_127.jpg' , 'images/surprise box/new_128.jpg' , 'images/surprise box/new_129.jpg' , 'images/surprise box/new_130.jpg' , 
+        'images/surprise box/new_131.jpg']
         var preload = {
             type: jsPsychPreload,
-            images: practice_leaves_images, practice_deck_images, test_leaves_images, test_deck_images, reward_images
+            images: practice_leaves_images, practice_deck_images, test_leaves_images, test_deck_images, reward_images, instructions_images, catch_trial_images
         };
 
         /*---------------------------------------------------- 
@@ -135,15 +147,15 @@
     
                 "<p style='text-align:left'> In our garden, there is an ancient tree that yields money when its leaves are collected.<br>"
                 + "The tree is quite large and has many different colored leaves. Below is an example of four leaves, which are very similar to the leaves in the game that you'll be playing.</p>" +
-                "<img class='group' src='images/group_leaves.jpg' >",
+                "<img class='group' src=" + instructions_images[0] + ">",
     
                 "<p style='text-align:left'> Occasionally, a pair of leaves may fall from the tree (as shown in the example below), and you will need to select one of them.<br> To choose <b>the left leaf press 's'</b> on your keyboard; to choose <b>the right leaf, press 'k'</b>.</p>"
-                + "<img class='example' src='images/example_leaves.jpg' >",
+                + "<img class='example' src=" + instructions_images[1] + ">",
     
                 "<p style='text-align:left'>Once you have chosen a leaf, the tree will reward you based on its color. The outcome will be shown in the center of the screen, as seen below.<br><br>"
                 + "<b>Winning in the game depends greatly on the color of the leaf you select. </b>"
                 + "Some leaf colors are more valuable than others, as the tree prefers certain colors over others.</p>"
-                + "<br> <img class='example' src='images/reward_example_leaves.jpg'>",
+                + "<br> <img class='example' src=" + instructions_images[2] + ">",
     
                 "<p style='text-align:left'>Your task is to determine which falling leaf is the best to select at any given time and choose it."
                 +"<br><br> <b>Please note that the chances of winning are independent</b> and learning about one leaf does not provide information about the other leaves.",
@@ -166,16 +178,16 @@
                 + "<p style='text-align:left'>At the end of the instructions, <b>we will ask you to complete a short quiz about them</b>, to make sure everything is well understood.</p>",
         
                 "<p style='text-align:left'> Below is an example of a card-deck of four cards, very much like the cards in the game to follow. </p>" +
-                "<img class='group' src='images/group.jpg' >",
+                "<img class='group' src=" + instructions_images[3] + ">",
         
                 "<p> On each step, only two cards from the 4-card deck will be offered (as shown in the example below).<br>You will be able to select the <b>left card by pressing 's'</b> and the <b>right card by pressing 'k'</b> on your keyboard."
                 + " <br><br><u>Please do your best to respond as fast and accurate as you can.</u><br><br>"
-                + "<img class='example' src='images/example.jpg' >",
+                + "<img class='example' src=" + instructions_images[4] + ">",
         
                 "<p style='text-align:left'>After selecting the card, you will see an outcome in the middle of the screen, as shown below.<br><br>"
                 + "<b>Winning very much depends on the card you chose - some cards are better than others in their deck.</b><br>"
                 + "Your task is to find out which card is the best in each deck at any time and choose it.<br><br> <b> Please note that the winning chances of the cards are independent</b>.<br> Learning about one card does not tell you anything about the other cards.</p>"
-                + "<br> <img class='example' src='images/reward_example.jpg'>",
+                + "<br> <img class='example' src=" + instructions_images[5] + ">",
         
                 "<p style='text-align:left'><u>Three important things to remember:</u><br>"
                 + "1. <b>How good a card is can change along with the game</b> - somewhat like the value of market products that sometimes worth more and sometimes less."
