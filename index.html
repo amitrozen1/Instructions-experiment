@@ -125,34 +125,34 @@
             pages: function() {
                 if (manipulation_condition == true){
                     return ["<p><b><u>Welcome to the leaves game</u></b></p>"
-                    + "<p style='text-align:left'>Your winnings in this game will earn you additional payment bonus for the study."
-                    + " If no extra money will be earned in the leaves game, you will still get £2.5 for completing this session of the study."
-                    + " However, <b>you can gain up to an extra £0.9 based on winnings in the game.</b></p>",
+                    + "<p style='text-align:left'>Your winnings in this game will earn you additional payment bonus for participating in this study."
+                    + "Even if you don't earn any extra money in the game, you will still receive £2.5 for completing this session of the study."
+                    + " However, <b>you can earn up to an extra £0.9 based on your winnings in the game.</b></p>",
     
-                "<p style='text-align:left'> We will now provide instructions regarding the leaves game. Please read them carefully. <br>"
-                + "Feel free to go back and forth between the screens.</p> "
-                + "<p style='text-align:left'>At the end of the instructions, <b>we will ask you to complete a short quiz about them</b>, to make sure everything is well understood.</p>",
+                "<p style='text-align:left'> We will now provide instructions for the leaves game. Please read them carefully. <br>"
+                + "You can go back and forth between screens as needed.</p> "
+                + "<p style='text-align:left'>At the end of the instructions, <b>we will ask you to complete a short quiz about them</b>, to ensure that everything is well understood.</p>",
     
-                "<p style='text-align:left'> In our garden, there is an ancient tree whose leaves yield money.<br>"
-                    + "The tree is quite large and has many different colored leaves. Below is an example of four leaves, very much like the leaves in the game to follow.</p>" +
+                "<p style='text-align:left'> In our garden, there is an ancient tree that yields money when its leaves are collected.<br>"
+                + "The tree is quite large and has many different colored leaves. Below is an example of four leaves, which are very similar to the leaves in the game that you'll be playing.</p>" +
                 "<img class='group' src='images/group_leaves.jpg' >",
     
-                "<p> A pair of leaves may occasionally fall down from the tree (as shown in the example below), and you will be required to pick up one of the falling leaves.<br> You may choose the <b>left leaf by pressing 's'</b> on your keyboard and the <b>right leaf by pressing 'k'</b>."
-                + " <br><br><u>Please do your best to respond as fast and accurate as you can.</u><br><br>"
+                "<p style='text-align:left'> Occasionally, a pair of leaves may fall from the tree (as shown in the example below), and you will need to select one of them.<br> To choose <b>the left leaf press 's'</b> on your keyboard; to choose <b>the right leaf, press 'k'</b>.</p>"
                 + "<img class='example' src='images/example_leaves.jpg' >",
     
-                "<p style='text-align:left'>After choosing one leaf, the tree will reward you based on the color of the leaf you chose. The outcome will be shown in the center of the screen, as seen below.<br><br>"
-                + "<b>Winning very much depends on the color of the chosen leaf.</b><br>"
-                + "Because the tree prefers some leaf colors over others, certain leaf colors are more valuable than others.</p>"
+                "<p style='text-align:left'>Once you have chosen a leaf, the tree will reward you based on its color. The outcome will be shown in the center of the screen, as seen below.<br><br>"
+                + "<b>Winning in the game depends greatly on the color of the leaf you select. </b>"
+                + "Some leaf colors are more valuable than others, as the tree prefers certain colors over others.</p>"
                 + "<br> <img class='example' src='images/reward_example_leaves.jpg'>",
     
-                "<p style='text-align:left'>Your task is to find out which of the falling leaves is the best at any given time and select it."
-                +"<br><br> <b>Please note that the winning chances of the leaves are independent</b>- <br> Learning about one leaf does not tell you anything about other leaves.</p>",
+                "<p style='text-align:left'>Your task is to determine which falling leaf is the best to select at any given time and choose it."
+                +"<br><br> <b>Please note that the chances of winning are independent</b> and learning about one leaf does not provide information about the other leaves.",
     
-                "<p style='text-align:left'><u>Three important things to remember:</u><br>"
-                + "1. Over time, the colors that the tree likes most change, which means that <b>how good a leaf is can change along with the game.</b>"
-                + "<br><br>2. <b>Winning very much depends on the color of the chosen leaf</b>. Today is a stormy day with strong winds. As a result, the wind can blow a leaf to the right or left, yet the leaf's position has no effect on the odds of winning. Also, the key you choose to pick the leaf off the ground has no effect on your odds of winning.<br><br>"
-                + " 3. <b>The possibility of getting money from a certain leaf has nothing to do with the other leaves - </b> you cannot learn about one leaf from the money rewards you got for the other.</p>"]
+                "<p style='text-align:left'><u>There are a few things to keep in mind while playing the game:</u><br>"
+                + "1. Over time, the colors that the tree prefers may change, which means that <b>the value of a leaf may change throughout the game.</b>"
+                + "<br><br>2. <b>Winning in the game depends on the color of the chosen leaf.</b>.<br> Today, it is a stormy day with strong winds, so the wind may blow a leaf to the left or right, but the position of the leaf doesn't affect your odds of winning. Additionally, the key you use to pick up the leaf has no effect on your odds of winning.<br><br>"
+                + " 3. <b>The possibility of winning money from a certain leaf is not related to the other leaves</b>, so you can't learn about one leaf from the money rewards you receive for the others."
+                + " <br><br><u>Please respond as quickly and accurately as possible.</u><br><br></p>"]
                 }
 
                 else{
@@ -193,16 +193,16 @@
                     document.querySelector('#cursor-toggle').remove()
             },
             type: jsPsychHtmlKeyboardResponse,
-            stimulus: "<p> <br><br> You will now move on to a quick quiz to make sure you understood the instructions. If you will have a mistake you will need to go again through the instructions. <br><br> <b> Press any key to continue</b></p>"
+            stimulus: "<p> <br><br> You will now take a brief quiz to ensure that you understood the instructions. If you make a mistake, you will need to review the instructions again. <br><br> <b> Press any key to continue</b></p>"
         }
         var Q1_2_options = ["2", "4", "6"];
         var Q3_options = ["Click on it", "Press the LEFT or RIGHT arrow keys", "Press the ‘S’ or ‘K’ key with your LEFT or RIGHT hand."];
         var Q5_6_options = ["True", "False"];
-        var Q7_options = ["The goal is to learn which card is better", "The goal is to pick a leaf as quickly as possible"]
+        var Q7_options = ["The goal is to learn which card is better", "The goal is to pick a card as quickly as possible"]
         var Q8_options = ["True", "False"];
         var Q9_options = ["True - the response keys are related to the winning chances", "False - you won't win more or less using RIGHT or LEFT response keys. Only the cards are related to your chance of winning."];
 
-        var Q7_options_leaves = ["The goal is to learn which leaf is better", "The goal is to pick a leaf as quickly as possible"]
+        var Q7_options_leaves = ["The goal is to learn which leaf color is more valuable.", "The goal is to pick a leaf as quickly as possible"]
         var Q9_options_leaves = ["True - the response keys are related to the winning chances", "False - you won't win more or less using RIGHT or LEFT response keys. Only the leaf colors are related to your chance of winning."];
 
         var instructions_test = {
@@ -211,22 +211,22 @@
                 if (manipulation_condition == true){
                     return [
                     { prompt: "How many leaves fall down from the tree each time?", name: 'leaves_step', correct: '2', options: Q1_2_options, required: true },
-                    { prompt: "How do you pick a leaf?", name: 'choose_leaf', correct: 'Press the ‘S’ or ‘K’ key with your LEFT or RIGHT hand.', options: Q3_options, required: true },
+                    { prompt: "How do you pick up a leaf?", name: 'choose_leaf', correct: 'Press the ‘S’ or ‘K’ key with your LEFT or RIGHT hand.', options: Q3_options, required: true },
                     { prompt: "Some leaf colors are better than others.", name: 'better_leaves', correct: 'True', options: Q5_6_options, required: true },
-                    { prompt: "How ‘good’ or ‘bad’ a leaf is will change along the game.", name: 'leaf_value_change', correct: 'True', options: Q5_6_options, required: true },
-                    { prompt: "What is the goal in the game?", name: 'leaves_game_goal', correct: "The goal is to learn which leaf is better", options: Q7_options_leaves, required: true },
-                    { prompt: "If one leaf leads you to more money, it means the other leaves will probably lead you to less money ", name: 'leaves_value_independence', correct: 'False', options: Q8_options, required: true },
-                    { prompt: "If you use the RIGHT and not the LEFT response keys, you might win more", name: 'leaves_location_value', correct: "False - you won't win more or less using RIGHT or LEFT response keys. Only the leaf colors are related to your chance of winning.", options: Q9_options_leaves, required: true },
+                    { prompt: "The value of a leaf can change during the game.", name: 'leaf_value_change', correct: 'True', options: Q5_6_options, required: true },
+                    { prompt: "What is the goal of the game?", name: 'leaves_game_goal', correct: "The goal is to learn which leaf color is more valuable.", options: Q7_options_leaves, required: true },
+                    { prompt: "If one leaf leads you to more money, it means the other leaves will probably lead you to less money.", name: 'leaves_value_independence', correct: 'False', options: Q8_options, required: true },
+                    { prompt: "Using the RIGHT response key instead of the LEFT key increases your chances of winning.", name: 'leaves_location_value', correct: "False - you won't win more or less using RIGHT or LEFT response keys. Only the leaf colors are related to your chance of winning.", options: Q9_options_leaves, required: true },
                 ]}
             else{ return [
                 { prompt: "What is the size of a card deck?", name: 'deck_size', correct: '4', options: Q1_2_options, required: true },
                 { prompt: "How many cards are presented on each step?", name: 'cards_step', correct: '2', options: Q1_2_options, required: true },
                 { prompt: "How do you choose a card?", name: 'choose_card', correct: 'Press the ‘S’ or ‘K’ key with your LEFT or RIGHT hand.', options: Q3_options, required: true },
                 { prompt: "Some cards are better than others.", name: 'better_cards', correct: 'True', options: Q5_6_options, required: true },
-                { prompt: "How ‘good’ or ‘bad’ a card is will change along the game.", name: 'value_change', correct: 'True', options: Q5_6_options, required: true },
-                { prompt: "What is the goal in the game?", name: 'game_goal', correct: "The goal is to learn which card is better", options: Q7_options, required: true },
-                { prompt: "If one card leads you to more money, it means the other cards will probably lead you to less money ", name: 'value_independence', correct: 'False', options: Q8_options, required: true },
-                { prompt: "If you use the RIGHT and not the LEFT response keys, you might win more", name: 'location_value', correct: "False - you won't win more or less using RIGHT or LEFT response keys. Only the cards are related to your chance of winning.", options: Q9_options, required: true },
+                { prompt: "The value of a card can change during the game.", name: 'value_change', correct: 'True', options: Q5_6_options, required: true },
+                { prompt: "What is the goal of the game?", name: 'game_goal', correct: "The goal is to learn which card is better", options: Q7_options, required: true },
+                { prompt: "If one card leads you to more money, it means the other cards will probably lead you to less money.", name: 'value_independence', correct: 'False', options: Q8_options, required: true },
+                { prompt: "Using the RIGHT response key instead of the LEFT key increases your chances of winning.", name: 'location_value', correct: "False - you won't win more or less using RIGHT or LEFT response keys. Only the cards are related to your chance of winning.", options: Q9_options, required: true },
             ]}
         }
         };
@@ -280,10 +280,10 @@
                 }
             },
             type: jsPsychInstructions,
-            pages: ["<p style='text-align:left'> Before you start the real game, we would like to test you on a real game step to ensure you understand the essence of the game.",
+            pages: ["<p style='text-align:left'> Before starting the real game, we would like to test you on a real game step to ensure you understand the essence of the game.",
 
-            "<p style='text-align:left'> You will start by watching a single game step without needing to respond.<br> Two leaves will be displayed for a few seconds. Then, one will be selected and an outcome will be displayed accordingly. </p> <br>"
-            + "<p style='text-align:left'>After witnessing the choice, a new pair of leaves will be presented to you. You will be required to choose <b>the best course of action</b>, in your opinion, from a set of options that will be presented to you.</p> ",],
+            "<p style='text-align:left'> You will begin by observing a single game step without needing to respond.<br> Two leaves will be displayed for a few seconds, after which one will be selected and an outcome will be displayed accordingly.</p> <br>"
+            + "<p style='text-align:left'>After witnessing the choice, a new pair of leaves will be presented to you. You will be required to choose <b>the best course of action</b> in your opinion from a set of options that will be presented to you.</p> ",],
             show_clickable_nav: true
         };
         
@@ -300,7 +300,7 @@
         }
         
         //dispalys the chosen card to the participant to 0.5 sec using show_choice func and saves the card to data
-        var confirm_choice1 = {
+        var confirm_choice = {
             type: jsPsychHtmlKeyboardResponse,
             stimulus: function (){
                 selected = jsPsych.randomization.sampleWithoutReplacement([0,1], 1)
@@ -327,7 +327,7 @@
         }
 
         //dispalys the reward to the participant and saves it in data
-        var confirm_reward1 = {
+        var confirm_reward = {
             type: jsPsychHtmlKeyboardResponse,
             stimulus: function () {
                 return show_reward(current_cards_practice_trial)
@@ -347,10 +347,10 @@
                 }
             },
             type: jsPsychInstructions,
-            pages: ["<p style='text-align:left'>You will now be presented with a pair of leaves.<br> Please consider them carefully and select the best course of action from the following options:<br>"
-                + "1. left card<br>"
-                + "2. right card<br>"
-                + "3. It doesn't matter because they are both equal to me<br>",],
+            pages: ["<p style='text-align:left'>Next, you will be presented with a pair of leaves.<br> Please consider them carefully and select the best course of action from the following options:<br>"
+                + "1. left leaf<br>"
+                + "2. right leaf<br>"
+                + "3. It doesn't matter because they are both equal to me<br></p>",],
             show_clickable_nav: true
         };
         
@@ -374,7 +374,7 @@
         var confirm_test = {
             type: jsPsychSurveyMultiChoice,
             questions: [
-                { prompt: "Which card is best considering the card choice you have witnessed before?", name: 'confirmation_question', correct: "It doesn't matter because they are both equal to me", options: confirm_options, required: true } ],
+                { prompt: "Which card do you think is the best choice, considering the card choice you have witnessed before?", name: 'confirmation_question', correct: "It doesn't matter because they are both equal to me", options: confirm_options, required: true } ],
                 //preamble: function () {
                  //   left_with_tag = "<img class='card_left' src='" + left_card + "'>"
                 //    right_with_tag = "<img class='card_right' src='" + right_card + "'>"
@@ -385,7 +385,7 @@
         var if_not_confirm = {
             type: jsPsychHtmlButtonResponse,
             stimulus: "<p>Sorry. You made a mistake.<br><br>"
-                + "Please note that <b> only the leaf colors are related to your chances of winning - </b> the location of the leaf and the response key you used to select it does not influence the chances of winning a coin.<br>"
+                + "Please note that <b> only the leaf colors are related to your chances of winning, </b>and the location of the leaf and the response key you used to select it do not influence the chances of winning a coin.<br>"
                 + "Please try again.",
             choices: ['Re- answer the question']
         }
@@ -393,7 +393,7 @@
         var if_confirm = {
             type: jsPsychHtmlButtonResponse,
             stimulus: "<p>Correct, Good job!<br><br>"
-                + "You are ready to start the real game. <br> If you haven't seen these leaves before, pick one at random because neither the leaf's placement nor the answer key you used to select it affect your odds of winning.<br>",
+                + "You are now ready to start the real game. <br> If you haven't seen these leaves before, please pick one at random, because neither the leaf's placement nor the answer key you used to select it affects your odds of winning.<br>",
             choices: ['Begin the game']
         }
 
@@ -712,7 +712,7 @@
             on_finish: function () { document.querySelector('head').insertAdjacentHTML('beforeend', '<style id="cursor-toggle"> html { cursor: none; } </style>') },
         }
 
-        var exp_cards1 = {
+        var exp_cards = {
             type: jsPsychHtmlKeyboardResponse,
             stimulus: function () {
                 return draw_show_cards(images_for_block_start())
@@ -723,60 +723,7 @@
 
         }
 
-        var exp_choice1 = {
-            type: jsPsychHtmlKeyboardResponse,
-            stimulus: show_choice,
-            choices: "NO_KEYS",
-            trial_duration: 500,
-            data: { phase: 'exp', trial_name: 'choice1', trial_num: function () { return current_cards_exp_trial } },
-            on_finish: function (data) {
-                data.key_selected = selected
-                if (selected == 0) {
-                    data.card_selected = images_for_block_start().indexOf(left_card)
-                }
-                else if (selected == 1) {
-                    data.card_selected = images_for_block_start().indexOf(right_card)
-                }
-            }
-        }
-        var exp_reward1 = {
-            type: jsPsychHtmlKeyboardResponse,
-            stimulus: function () {
-                return show_reward(current_cards_exp_trial)
-            },
-            choices: "NO_KEYS",
-            trial_duration: 750,
-            data: {
-                phase: 'exp', trial_name: 'reward1', trial_num: function () { return current_cards_exp_trial }, block: function () { return block }},
-
-            on_finish: function (data) {
-                data.reward = reward;
-                data.key_selected = selected
-                if (selected == 0) {
-                    data.card_selected = images_for_block_start().indexOf(left_card)
-                }
-                else if (selected == 1) {
-                    data.card_selected = images_for_block_start().indexOf(right_card)
-                }
-            }
-        }
-
-        var exp_cards2 = {
-            type: jsPsychHtmlKeyboardResponse,
-            stimulus: function () {
-                left_card = drawn_cards[2];
-                right_card = drawn_cards[3];
-                left_with_tag = "<img class='card_left' src='" + left_card + "'>"
-                right_with_tag = "<img class='card_right' src='" + right_card + "'>"
-                return left_with_tag + right_with_tag + fixation;
-            },
-            choices: ['s', 'k'],
-            trial_duration: 6000,
-            data: { phase: 'exp', trial_name: 'cards2', trial_num: function () { return current_cards_exp_trial } },
-
-        }
-
-        var exp_choice2 = {
+        var exp_choice = {
             type: jsPsychHtmlKeyboardResponse,
             stimulus: show_choice,
             choices: "NO_KEYS",
@@ -792,7 +739,7 @@
                 }
             }
         }
-        var exp_reward2 = {
+        var exp_reward = {
             type: jsPsychHtmlKeyboardResponse,
             stimulus: function () {
                 return show_reward(current_cards_exp_trial)
@@ -855,7 +802,7 @@
         }
     
         var confirm_loop = {
-            timeline: [confirm_instructions_cards, confirm_cards1, confirm_choice1, confirm_reward1, confirm_instructions_before_question, confirm_cards2, confirm_test, check_answers_confirm],
+            timeline: [confirm_instructions_cards, confirm_cards1, confirm_choice, confirm_reward, confirm_instructions_before_question, confirm_cards2, confirm_test, check_answers_confirm],
             loop_function: function () {
                 if (if_not_confirm == true) {
                     return true;
@@ -878,9 +825,10 @@
         }
 
         var test_procedure_cards = {
-            timeline: [fixation_cards, exp_cards1, exp_choice1, exp_reward1, fixation_cards, exp_cards2, exp_choice2, exp_reward2],
-            repetitions: 1 // 10sec per trial - 50 trials per block.
+            timeline: [fixation_cards, exp_cards, exp_choice, exp_reward],
+            repetitions: 50 // 10sec per trial - 50 trials per block.
         }
+
         var test_blocks = {
             timeline: [start_block, test_procedure_cards, finish_block],
             repetitions: 3
