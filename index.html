@@ -75,19 +75,20 @@
         /*---------------------------------------------------- 
         Define images
         ------------------------------------------------------*/
+        var manipulation_trial1= ['true', 'false', 'false', 'false', 'true', 'false', 'true', 'false', 'true', 'false', 'false', 'false', 'false', 'true', 'false', 'false', 'false', 'false',
+         'true', 'false', 'false', 'false', 'false', 'false', 'false', 'false', 'true', 'false', 'true', 'false', 'false', 'false', 'true', 'false', 'false', 'false', 'true', 'false', 'true',
+          'false', 'false', 'true', 'false', 'false', 'true', 'false', 'false', 'false',  'false', 'true']
         if (localStorage.prolific != undefined) { //are we debugging?
             var sign = localStorage.prolific[localStorage.prolific.length - 1];
             if (['0', '1', '2', '3', '4', 'a', 'b', 'c'].includes(sign)) {
-                mapping = 'sk'
+
                 manipulation_condition = true
             }
             else {
-                mapping = 'ks'
                 manipulation_condition = false
             }
         }
         else {
-            var mapping = 'sk'
             var manipulation_condition = true
         }
 
