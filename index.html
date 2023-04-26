@@ -12,6 +12,7 @@
     <script src="jspsych/plugin-survey-text.js"></script>
     <script src="jspsych/plugin-survey-multi-choice.js"></script>
     <script src="jspsych/plugin-fullscreen.js"></script>
+    <script src="jspsych/plugin-call-function.js"></script>
     <script src="jspsych/plugin-html-button-response.js"></script>
     <script src="jspsych/plugin-html-slider-response.js"></script>
     <link href="css/my_exp.css" rel="stylesheet" type="text/css">
@@ -75,9 +76,41 @@
         /*---------------------------------------------------- 
         Define images
         ------------------------------------------------------*/
-        var manipulation_trial1= ['true', 'false', 'false', 'false', 'true', 'false', 'true', 'false', 'true', 'false', 'false', 'false', 'false', 'true', 'false', 'false', 'false', 'false',
-         'true', 'false', 'false', 'false', 'false', 'false', 'false', 'false', 'true', 'false', 'true', 'false', 'false', 'false', 'true', 'false', 'false', 'false', 'true', 'false', 'true',
-          'false', 'false', 'true', 'false', 'false', 'true', 'false', 'false', 'false',  'false', 'true']
+        var manipulation_block_1= [true, false, false, false, true, false, true, false, true, false, false, false, false, true, false, false, false, false,
+         true, false, false, false, false, false, false, false, true, false, true, false, false, false, true, false, false, false, true, false, true,
+          false, false, true, false, false, true, false, false, false,  false, true]
+
+        var manipulation_block_2= [false, true, false, false, false, true, false, false, true, false, false, false, true, false, false, true, false, true, 
+        false, true, false, false, false, true, false, false, true, false, false, true, false, false, false, false, false, true, false, false, true, 
+        false, false, false, true, false, false, true, false, true, false, false]
+
+        var manipulation_block_3= [false, false, true,false, false, false, false, false, false, true, false, true, false, true, false, true, false, false, 
+        true, false, true, false, false, false, false, false, true, false, false, false, true, false, true, false, false, false, true, false, true, 
+        false, false, true, false, true, false, false, true, false, false, true]
+
+        var manipulation_block_4= [false, true, false, false, false, true, false, false, true, false, true, false, true, false, false, true, false, false, 
+        false, true, false, false, false, false, true, false, true, false, false, false, true, false, true, false, false, true, false, false, true, 
+        false, false, false, true, false, true, false, false, false, false, true]
+
+        var manipulation_block_5= [false, false, true, false, true, false, true, false, true, false, false, true, false, false, true, false, false, false, 
+        true, false, true, false, false, true, false, false, false, true, false, false, true, false, false, false, false, false, true, false, false, 
+        false, false, true, false, true, false, false, true, false, true, false]
+
+        var manipulation_block_6= [false, false, true, false, false, false, true, false, true, false, true, false, false, true, false, false, false, true, 
+        false, true, false, false, true, false, true, false, false, false, false, true, false, false, true, false, false, true, false, false, false, 
+        false, true, false, false, false, true, false, false, true, false, true]
+
+        var manipulation_block_7= [false, false, true, false, false, true, false, false, false, false, false, false, true, false, true, false, false, false, 
+        true, false, true, false, false, true, false, true, false, true, false, false, false, true, false, false, true, false, false, true, false, true, 
+        false, true, false, true, false, false, false, true, false, false]
+
+        var manipulation_block_8= [true, false, false, false, false, true, false, true, false, true, false, true, false, false, true, false, true, false, 
+        true, false, false, false, false, false, false, true, false, true, false, false, true, false, false, false, true, false, true, false, true, 
+        false, false, false, false, false, true, false, true, false, false, false]
+
+        manipulation_1 = [manipulation_block_1, manipulation_block_3, manipulation_block_5, manipulation_block_7]
+        manipulation_2 = [manipulation_block_2, manipulation_block_4, manipulation_block_6, manipulation_block_8]
+
         if (localStorage.prolific != undefined) { //are we debugging?
             var sign = localStorage.prolific[localStorage.prolific.length - 1];
             if (['0', '1', '2', '3', '4', 'a', 'b', 'c'].includes(sign)) {
@@ -90,6 +123,10 @@
         }
         else {
             var manipulation_condition = true
+        }
+
+        if (manipulation_condition == true){
+            var exp_blocks = jsPsych.randomization.sampleWithoutReplacement([manipulation_block_1, manipulation_block_2, manipulation_block_3, manipulation_block_4, manipulation_block_5, manipulation_block_6, manipulation_block_7, manipulation_block_8], 4)
         }
 
         var practice_leaves_images = ['images/practice/1p.jpg', 'images/practice/2p.jpg', 'images/practice/3p.jpg', 'images/practice/4p.jpg']
@@ -119,6 +156,7 @@
         'images/surprise box/new_111.jpg' , 'images/surprise box/new_112.jpg' , 'images/surprise box/new_113.jpg' , 'images/surprise box/new_114.jpg' , 'images/surprise box/new_115.jpg' , 'images/surprise box/new_116.jpg' , 'images/surprise box/new_117.jpg' , 'images/surprise box/new_118.jpg' , 'images/surprise box/new_119.jpg' , 'images/surprise box/new_120.jpg' , 
         'images/surprise box/new_121.jpg' , 'images/surprise box/new_122.jpg' , 'images/surprise box/new_123.jpg' , 'images/surprise box/new_124.jpg' , 'images/surprise box/new_125.jpg' , 'images/surprise box/new_126.jpg' , 'images/surprise box/new_127.jpg' , 'images/surprise box/new_128.jpg' , 'images/surprise box/new_129.jpg' , 'images/surprise box/new_130.jpg' , 
         'images/surprise box/new_131.jpg']
+        catch_trial_images = jsPsych.randomization.repeat(catch_trial_images, 1) //shuffles the order
         var preload = {
             type: jsPsychPreload,
             images: practice_leaves_images, practice_deck_images, test_leaves_images, test_deck_images, reward_images, instructions_images, catch_trial_images
@@ -159,7 +197,9 @@
                 + "<br> <img class='example' src=" + instructions_images[2] + ">",
     
                 "<p style='text-align:left'>Your task is to determine which falling leaf is the best to select at any given time and choose it."
-                +"<br><br> <b>Please note that the chances of winning are independent</b> and learning about one leaf does not provide information about the other leaves.",
+                +"<br><br> <b>Please note that the chances of winning are independent</b> and learning about one leaf does not provide information about the other leaves.</p>",
+
+                "<p style='text-align:left'>Please note that in the actual game, there will be rounds where cards with shapes will appear instead of leaves.<br> During these rounds, you will need to choose one of the cards, but <b>you will not receive a reward for your choice</b>.</p>",
     
                 "<p style='text-align:left'><u>There are a few things to keep in mind while playing the game:</u><br>"
                 + "1. Over time, the colors that the tree prefers may change, which means that <b>the value of a leaf may change throughout the game.</b>"
@@ -196,7 +236,8 @@
                 + " 3. <b>The chance that each card will give you money has nothing to do with the other cards - </b> you can't learn about one card from the money rewards you got for the other.</p>"]
                 }
             },
-        show_clickable_nav: true
+        show_clickable_nav: true,
+        data: { is_manipulation: function () { return manipulation_condition } },
     };
     
         
@@ -228,6 +269,7 @@
                     { prompt: "Some leaf colors are better than others.", name: 'better_leaves', correct: 'True', options: Q5_6_options, required: true },
                     { prompt: "The value of a leaf can change during the game.", name: 'leaf_value_change', correct: 'True', options: Q5_6_options, required: true },
                     { prompt: "What is the goal of the game?", name: 'leaves_game_goal', correct: "The goal is to learn which leaf color is more valuable.", options: Q7_options_leaves, required: true },
+                    { prompt: "In rounds that feature shape cards rather than leaves, it's possible to earn money by picking the right card.", name: 'reward_catch_trial', correct: "False", options: Q5_6_options, required: true },
                     { prompt: "If one leaf leads you to more money, it means the other leaves will probably lead you to less money.", name: 'leaves_value_independence', correct: 'False', options: Q8_options, required: true },
                     { prompt: "Using the RIGHT response key instead of the LEFT key increases your chances of winning.", name: 'leaves_location_value', correct: "False - you won't win more or less using RIGHT or LEFT response keys. Only the leaf colors are related to your chance of winning.", options: Q9_options_leaves, required: true },
                 ]}
@@ -445,10 +487,18 @@
         ------------------------------------------------------*/
 
         //samples 4 cards and puts the first as the left one, the second as the right one (with fixation between them)
-        function draw_show_cards(deck) {
-            drawn_cards = jsPsych.randomization.sampleWithoutReplacement(deck, 4)
-            left_card = drawn_cards[0];
-            right_card = drawn_cards[1];
+        function draw_show_cards(deck, catch_trial = false) {
+            if (catch_trial){
+                left_card = deck[catch_trial_used_cards];
+                catch_trial_used_cards++
+                right_card = deck[catch_trial_used_cards];
+                catch_trial_used_cards++
+            }
+            else {
+                drawn_cards = jsPsych.randomization.sampleWithoutReplacement(deck, 4)
+                left_card = drawn_cards[0];
+                right_card = drawn_cards[1];
+            }
             left_with_tag = "<img class='card_left' src='" + left_card + "'>"
             right_with_tag = "<img class='card_right' src='" + right_card + "'>"
             return left_with_tag + right_with_tag + fixation;
@@ -496,14 +546,38 @@
 
             return card_to_show + reward_to_show
         }
+        
         //determines the images on each block
         function images_for_block_start() {
             if (manipulation_condition == true){
-                images = test_leaves_images.slice(block * 4, block * 4 + 4)
-            } else{
+                images = test_leaves_images.slice(block * 4, block * 4 + 4)}
+            else{
             images = test_deck_images.slice(block * 4, block * 4 + 4)
             }
             return images
+        }
+
+        var generate_end_of_tiral = function() {
+            var data = jsPsych.data.get();
+            current_cards_exp_trial += 1;
+
+            data.reward = reward;
+            data.key_selected = selected
+            if (selected == 0) {
+                data.card_selected = images_for_block_start().indexOf(left_card)
+            }
+            else if (selected == 1) {
+                data.card_selected = images_for_block_start().indexOf(right_card)
+            }
+
+            var correct = false;
+            if (data.correct_response == data.key_press) {
+                correct = true;
+            }
+            else if (data.key_press == null) {
+                correct = null;
+            }
+            data.is_correct = correct;
         }
 
         /*This function downloads the data */
@@ -535,6 +609,7 @@
         var right_card;
         var selected;
         var reward;
+        var catch_trial_used_cards = 0;
 
         /*---------------------------------------------------- 
         Start practice
@@ -561,6 +636,7 @@
             type: jsPsychHtmlKeyboardResponse,
             stimulus: function () {
                 if (manipulation_condition == true){
+
                     return draw_show_cards(practice_leaves_images)
                 }
                 else{
@@ -728,11 +804,18 @@
         var exp_cards = {
             type: jsPsychHtmlKeyboardResponse,
             stimulus: function () {
+                
+                if (manipulation_condition == true){
+                    if (exp_blocks[block][current_cards_exp_trial] == true){
+                        return draw_show_cards(catch_trial_images, true)
+                    }
+                }
+                
                 return draw_show_cards(images_for_block_start())
             },
             choices: ['s', 'k'],
             trial_duration: 6000,
-            data: { phase: 'exp', trial_name: 'cards1', trial_num: function () { return current_cards_exp_trial } },
+            data: { phase: 'exp', trial_name: 'cards1', trial_num: function () { return current_cards_exp_trial }, is_catch_trial: function() {if (manipulation_condition){return exp_blocks[block][current_cards_exp_trial]}}},
 
         }
 
@@ -740,8 +823,8 @@
             type: jsPsychHtmlKeyboardResponse,
             stimulus: show_choice,
             choices: "NO_KEYS",
-            trial_duration: 500,
-            data: { phase: 'exp', trial_name: 'choice2', trial_num: function () { return current_cards_exp_trial } },
+            trial_duration: 900,
+            data: { phase: 'exp', trial_name: 'choice2', trial_num: function () { return current_cards_exp_trial }, is_catch_trial: function() {if (manipulation_condition){return exp_blocks[block][current_cards_exp_trial]}} },
             on_finish: function (data) {
                 data.key_selected = selected
                 if (selected == 0) {
@@ -756,33 +839,23 @@
             type: jsPsychHtmlKeyboardResponse,
             stimulus: function () {
                 return show_reward(current_cards_exp_trial)
+            //    if (manipulation_condition == true){
+            //        if (exp_blocks[block][current_cards_exp_trial] == false){
+            //            return show_reward(current_cards_exp_trial)
+            //        }
+             //   }
+            //    if (manipulation_condition == false){
+            //    return show_reward(current_cards_exp_trial)}
             },
             choices: "NO_KEYS",
             trial_duration: 750,
             data: {
-                phase: 'exp', trial_name: 'reward2', trial_num: function () { return current_cards_exp_trial }, block: function () { return block },mapping: mapping,},
-                
-            on_finish: function (data) {
-                current_cards_exp_trial += 1;
+                phase: 'exp', trial_name: 'reward2', trial_num: function () { return current_cards_exp_trial }, block: function () { return block }, is_catch_trial: function() {if (manipulation_condition){return exp_blocks[block][current_cards_exp_trial]}}}
+        }
 
-                data.reward = reward;
-                data.key_selected = selected
-                if (selected == 0) {
-                    data.card_selected = images_for_block_start().indexOf(left_card)
-                }
-                else if (selected == 1) {
-                    data.card_selected = images_for_block_start().indexOf(right_card)
-                }
-
-                var correct = false;
-                if (data.correct_response == data.key_press) {
-                    correct = true;
-                }
-                else if (data.key_press == null) {
-                    correct = null;
-                }
-                data.is_correct = correct;
-            }
+        var finish_trial = {
+            type: jsPsychCallFunction,
+            func: generate_end_of_tiral
         }
 
 
@@ -837,10 +910,32 @@
             }
         }
 
-        var test_procedure_cards = {
-            timeline: [fixation_cards, exp_cards, exp_choice, exp_reward],
-            repetitions: 50 // 10sec per trial - 50 trials per block.
+        var is_reward = {
+            timeline : [exp_reward],
+            conditional_function() {
+                if (manipulation_condition){
+                    var data1 = jsPsych.data.get();
+                    var data2 = data1.last(1);
+                    var data3 = data2.values()[0];
+                
+                    if (data3.is_catch_trial == true){
+                        return false;
+                    } 
+                    else {
+                        return true;
+                    }
+                }
+                else {
+                    return true;
+                }
+            }
         }
+
+        var test_procedure_cards = {
+            timeline: [fixation_cards, exp_cards, exp_choice, is_reward, finish_trial],
+            repetitions: 5 // 10sec per trial - 50 trials per block.
+        }
+
 
         var test_blocks = {
             timeline: [start_block, test_procedure_cards, finish_block],
