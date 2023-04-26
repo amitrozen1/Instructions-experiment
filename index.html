@@ -222,8 +222,7 @@
                 "<img class='group' src=" + instructions_images[3] + ">",
         
                 "<p> On each step, only two cards from the 4-card deck will be offered (as shown in the example below).<br>You will be able to select the <b>left card by pressing 's'</b> and the <b>right card by pressing 'k'</b> on your keyboard."
-                + " <br><br><u>Please do your best to respond as fast and accurate as you can.</u><br><br>"
-                + "<img class='example' src=" + instructions_images[4] + ">",
+                + "<br><br> <img class='example' src=" + instructions_images[4] + ">",
         
                 "<p style='text-align:left'>After selecting the card, you will see an outcome in the middle of the screen, as shown below.<br><br>"
                 + "<b>Winning very much depends on the card you chose - some cards are better than others in their deck.</b><br>"
@@ -233,7 +232,8 @@
                 "<p style='text-align:left'><u>Three important things to remember:</u><br>"
                 + "1. <b>How good a card is can change along with the game</b> - somewhat like the value of market products that sometimes worth more and sometimes less."
                 + "<br><br>2.<b> Only the cards are related to your chances of winning - </b> the location of the card and the response key you used to select it does not influence the chances of winning a coin.<br><br>"
-                + " 3. <b>The chance that each card will give you money has nothing to do with the other cards - </b> you can't learn about one card from the money rewards you got for the other.</p>"]
+                + " 3. <b>The chance that each card will give you money has nothing to do with the other cards - </b> you can't learn about one card from the money rewards you got for the other.</p>"
+                + " <br><br><u>Please do your best to respond as fast and accurate as you can.</u><br><br>"]
                 }
             },
         show_clickable_nav: true,
@@ -259,21 +259,9 @@
         var Q7_options_leaves = ["The goal is to learn which leaf color is more valuable.", "The goal is to pick a leaf as quickly as possible"]
         var Q9_options_leaves = ["True - the response keys are related to the winning chances", "False - you won't win more or less using RIGHT or LEFT response keys. Only the leaf colors are related to your chance of winning."];
 
-        var instructions_test = {
+        var instructions_test_cards = {
             type: jsPsychSurveyMultiChoice,
-            questions: function(){
-                if (manipulation_condition == true){
-                    return [
-                    { prompt: "How many leaves fall down from the tree each time?", name: 'leaves_step', correct: '2', options: Q1_2_options, required: true },
-                    { prompt: "How do you pick up a leaf?", name: 'choose_leaf', correct: 'Press the ‘S’ or ‘K’ key with your LEFT or RIGHT hand.', options: Q3_options, required: true },
-                    { prompt: "Some leaf colors are better than others.", name: 'better_leaves', correct: 'True', options: Q5_6_options, required: true },
-                    { prompt: "The value of a leaf can change during the game.", name: 'leaf_value_change', correct: 'True', options: Q5_6_options, required: true },
-                    { prompt: "What is the goal of the game?", name: 'leaves_game_goal', correct: "The goal is to learn which leaf color is more valuable.", options: Q7_options_leaves, required: true },
-                    { prompt: "In rounds that feature shape cards rather than leaves, it's possible to earn money by picking the right card.", name: 'reward_catch_trial', correct: "False", options: Q5_6_options, required: true },
-                    { prompt: "If one leaf leads you to more money, it means the other leaves will probably lead you to less money.", name: 'leaves_value_independence', correct: 'False', options: Q8_options, required: true },
-                    { prompt: "Using the RIGHT response key instead of the LEFT key increases your chances of winning.", name: 'leaves_location_value', correct: "False - you won't win more or less using RIGHT or LEFT response keys. Only the leaf colors are related to your chance of winning.", options: Q9_options_leaves, required: true },
-                ]}
-            else{ return [
+            questions: [
                 { prompt: "What is the size of a card deck?", name: 'deck_size', correct: '4', options: Q1_2_options, required: true },
                 { prompt: "How many cards are presented on each step?", name: 'cards_step', correct: '2', options: Q1_2_options, required: true },
                 { prompt: "How do you choose a card?", name: 'choose_card', correct: 'Press the ‘S’ or ‘K’ key with your LEFT or RIGHT hand.', options: Q3_options, required: true },
@@ -282,8 +270,21 @@
                 { prompt: "What is the goal of the game?", name: 'game_goal', correct: "The goal is to learn which card is better", options: Q7_options, required: true },
                 { prompt: "If one card leads you to more money, it means the other cards will probably lead you to less money.", name: 'value_independence', correct: 'False', options: Q8_options, required: true },
                 { prompt: "Using the RIGHT response key instead of the LEFT key increases your chances of winning.", name: 'location_value', correct: "False - you won't win more or less using RIGHT or LEFT response keys. Only the cards are related to your chance of winning.", options: Q9_options, required: true },
-            ]}
-        }
+            ]
+        };
+        
+        var instructions_test_leaves = {
+            type: jsPsychSurveyMultiChoice,
+            questions: [
+            { prompt: "How many leaves fall down from the tree each time?", name: 'leaves_step', correct: '2', options: Q1_2_options, required: true },
+            { prompt: "How do you pick up a leaf?", name: 'choose_leaf', correct: 'Press the ‘S’ or ‘K’ key with your LEFT or RIGHT hand.', options: Q3_options, required: true },
+            { prompt: "Some leaf colors are better than others.", name: 'better_leaves', correct: 'True', options: Q5_6_options, required: true },
+            { prompt: "The value of a leaf can change during the game.", name: 'leaf_value_change', correct: 'True', options: Q5_6_options, required: true },
+            { prompt: "What is the goal of the game?", name: 'leaves_game_goal', correct: "The goal is to learn which leaf color is more valuable.", options: Q7_options_leaves, required: true },
+            { prompt: "In rounds that feature shape cards rather than leaves, it's possible to earn money by picking the right card.", name: 'reward_catch_trial', correct: "False", options: Q5_6_options, required: true },
+            { prompt: "If one leaf leads you to more money, it means the other leaves will probably lead you to less money.", name: 'leaves_value_independence', correct: 'False', options: Q8_options, required: true },
+            { prompt: "Using the RIGHT response key instead of the LEFT key increases your chances of winning.", name: 'leaves_location_value', correct: "False - you won't win more or less using RIGHT or LEFT response keys. Only the leaf colors are related to your chance of winning.", options: Q9_options_leaves, required: true },
+        ]
         };
 
         var if_trial = {
@@ -298,20 +299,16 @@
         var check_answers = {
             timeline: [if_trial],
             conditional_function: function () {
-                // get the data from the previous trial,
-                // and check which key was pressed
                 to_repeat = false;
-                var temp1 = jsPsych.data.get()
-                var temp1_1 = temp1.filter({ trial_type: 'survey-multi-choice' })
-                var temp2 = temp1_1.last(1)
-                var temp3 = temp2.select('response')
-                var temp4 = temp3.values[0]
-                //var responses_to_test = JSON.parse(temp4)
-                //var responses_to_test = JSON.parse(jsPsych.data.get().filter({ trial_type: 'survey-multi-choice' }).last(1).select('responses').values[0])
-                for (i = 0; i < instructions_test.questions.length; i++) {
-                    current_name = instructions_test.questions[i].name;
-                    current_correct = instructions_test.questions[i].correct
-                    if (current_correct != temp4[current_name]) {
+                var data = jsPsych.data.get().filter({ trial_type: 'survey-multi-choice' }).last(1).select('response').values[0]
+                var name_test = instructions_test_cards;
+                if (manipulation_condition == true){
+                    name_test = instructions_test_leaves;
+                }
+                for (i = 0; i < name_test.questions.length; i++) {
+                    current_name = name_test.questions[i].name;
+                    current_correct = name_test.questions[i].correct
+                    if (current_correct != data[current_name]) {
                         to_repeat = true;
                         return to_repeat
                     }
@@ -342,7 +339,6 @@
             show_clickable_nav: true
         };
         
-         //shows the cards using draw_show_cards func, the participant chooses one card and difine data information
          var confirm_cards1 = {
             type: jsPsychHtmlKeyboardResponse,
             stimulus: function () {
@@ -354,7 +350,6 @@
 
         }
         
-        //dispalys the chosen card to the participant to 0.5 sec using show_choice func and saves the card to data
         var confirm_choice = {
             type: jsPsychHtmlKeyboardResponse,
             stimulus: function (){
@@ -381,7 +376,6 @@
             }
         }
 
-        //dispalys the reward to the participant and saves it in data
         var confirm_reward = {
             type: jsPsychHtmlKeyboardResponse,
             stimulus: function () {
@@ -409,7 +403,6 @@
             show_clickable_nav: true
         };
         
-        // same as practice_cards and here the cards are deterministically chosen (they were sampled in practice_cards)
         var confirm_cards2 = {
             type: jsPsychHtmlKeyboardResponse,
             stimulus: function () {
@@ -456,20 +449,12 @@
         var check_answers_confirm = {
             timeline: [if_not_confirm],
             conditional_function: function () {
-                // get the data from the previous trial,
-                // and check which key was pressed
                 if_not_confirm = false;
-                var temp1 = jsPsych.data.get()
-                var temp1_1 = temp1.filter({ trial_type: 'survey-multi-choice' })
-                var temp2 = temp1_1.last(1)
-                var temp3 = temp2.select('response')
-                var temp4 = temp3.values[0]
-                //var responses_to_test = JSON.parse(temp4)
-                //var responses_to_test = JSON.parse(jsPsych.data.get().filter({ trial_type: 'survey-multi-choice' }).last(1).select('responses').values[0])
+                var data = jsPsych.data.get().filter({ trial_type: 'survey-multi-choice' }).last(1).select('response').values[0]
                 for (i = 0; i < confirm_test.questions.length; i++) {
                     current_name = confirm_test.questions[i].name;
                     current_correct = confirm_test.questions[i].correct
-                    if (current_correct != temp4[current_name]) {
+                    if (current_correct != data[current_name]) {
                         if_not_confirm = true;
                         return if_not_confirm
                     }
@@ -486,7 +471,6 @@
         Functions for card game
         ------------------------------------------------------*/
 
-        //samples 4 cards and puts the first as the left one, the second as the right one (with fixation between them)
         function draw_show_cards(deck, catch_trial = false) {
             if (catch_trial){
                 left_card = deck[catch_trial_used_cards];
@@ -504,7 +488,6 @@
             return left_with_tag + right_with_tag + fixation;
         }
         
-        //reveals the selection to the participant and settle the reward as 0 if the participant didn't make any choise
         function show_choice() {
 
             last_choice = jsPsych.data.getLastTrialData().values()[0].response
@@ -524,10 +507,8 @@
             return card_to_show + fixation
         }
 
-        //reveals the reward to the participant (it depents on the current trial number because the changes overtime due to the random walk)
         function show_reward(current_trial_num) {
             key_selected = jsPsych.data.getLastTrialData().values()[0].key_selected
-            //determines if the left or right card was chosen
             if (key_selected == 0) {
                 card_to_show = "<img class='card_left' src='" + left_card + "'>"
             }
@@ -537,17 +518,16 @@
             else {
                 return '<div style="font-size:40px;">Please respond faster!</div>'
             }
-            card_selected = jsPsych.data.getLastTrialData().values()[0].card_selected //determines the identity of the chosen card
-            prob_reward = FB_matrix[card_selected][current_trial_num]; //use the FB as reward func to get the propability for reward
-            prob_unreward = 1 - prob_reward; //get the propability to be unrewarded
-            reward = jsPsych.randomization.sampleWithReplacement([0, 1], 1, [prob_unreward, prob_reward])[0]; //samples the reward with the reward propabilities the were calculated
+            card_selected = jsPsych.data.getLastTrialData().values()[0].card_selected 
+            prob_reward = FB_matrix[card_selected][current_trial_num]; 
+            prob_unreward = 1 - prob_reward;
+            reward = jsPsych.randomization.sampleWithReplacement([0, 1], 1, [prob_unreward, prob_reward])[0];
             reward_to_show = "<img class=reward src='" + reward_images[reward] + "'>" 
 
 
             return card_to_show + reward_to_show
         }
         
-        //determines the images on each block
         function images_for_block_start() {
             if (manipulation_condition == true){
                 images = test_leaves_images.slice(block * 4, block * 4 + 4)}
@@ -620,18 +600,16 @@
             type: jsPsychHtmlKeyboardResponse,
             stimulus: '<div>We will now do a few practice trials. <br> Please be ready with your fingers on <b>"s"</b> and <b>"k".</b> <br><br> <b> Press any key to begin</b></div>',
             post_trial_gap: 1000,
-            //removes mouse on finish
             on_finish: function () { document.querySelector('head').insertAdjacentHTML('beforeend', '<style id="cursor-toggle"> html { cursor: none; } </style>') },
         }
 
-        var fixation_cards = {  //fixation before the cards apear
+        var fixation_cards = { 
             type: jsPsychHtmlKeyboardResponse,
             stimulus: fixation,
             choices: "NO_KEYS",
             trial_duration: 900
         }
 
-        //shows the cards using draw_show_cards func, the participant chooses one card and difine data informatino
         var practice_cards1 = {
             type: jsPsychHtmlKeyboardResponse,
             stimulus: function () {
@@ -649,7 +627,6 @@
 
         }
         
-        //dispalys the chosen card to the participant to 0.5 sec using show_choice func and saves the card to data
         var practice_choice1 = {
             type: jsPsychHtmlKeyboardResponse,
             stimulus: show_choice,
@@ -677,7 +654,6 @@
             }
         }
 
-        //dispalys the reward to the participant and saves it in data
         var practice_reward1 = {
             type: jsPsychHtmlKeyboardResponse,
             stimulus: function () {
@@ -691,7 +667,6 @@
             }
         }
 
-        // same as practice_cards and here the cards are deterministically chosen (they were sampled in practice_cards)
         var practice_cards2 = {
             type: jsPsychHtmlKeyboardResponse,
             stimulus: function () {
@@ -761,7 +736,6 @@
         Start exp part of card game
         ------------------------------------------------------*/
 
-        //displays to the participant that practice is over
         var start_exp_cards = {
             type: jsPsychHtmlKeyboardResponse,
             stimulus: function() {
@@ -776,7 +750,6 @@
             
         }
 
-        //on each block start, the playing cards will appear and the block number
         var start_block = {
             type: jsPsychHtmlKeyboardResponse,
             stimulus: function () {
@@ -839,13 +812,6 @@
             type: jsPsychHtmlKeyboardResponse,
             stimulus: function () {
                 return show_reward(current_cards_exp_trial)
-            //    if (manipulation_condition == true){
-            //        if (exp_blocks[block][current_cards_exp_trial] == false){
-            //            return show_reward(current_cards_exp_trial)
-            //        }
-             //   }
-            //    if (manipulation_condition == false){
-            //    return show_reward(current_cards_exp_trial)}
             },
             choices: "NO_KEYS",
             trial_duration: 750,
@@ -878,9 +844,53 @@
                 current_cards_exp_trial = 0;
             }
         }
+        /*---------------------------------------------------- 
+        Define conditional timelines
+        ------------------------------------------------------*/
+        var is_reward = {
+            timeline : [exp_reward],
+            conditional_function() {
+                if (manipulation_condition){
+                    var data1 = jsPsych.data.get().last(1).values()[0];
+                    if (data.is_catch_trial == true){
+                        return false;
+                    } 
+                    else {
+                        return true;
+                    }
+                }
+                else {
+                    return true;
+                }
+            }
+        }
+
+        instructions_test_for_leaves = {
+            timeline : [instructions_test_leaves],
+            conditional_function() {
+                if (manipulation_condition){
+                    return true
+                }
+                else{
+                    return false
+                }
+            }
+        }
+
+        instructions_test_for_cards = {
+            timeline : [instructions_test_cards],
+            conditional_function() {
+                if (!manipulation_condition){
+                    return true
+                }
+                else{
+                    return false
+                }
+            }
+        }
 
         /*---------------------------------------------------- 
-        Define timeline for card part
+        Define timelines
         ------------------------------------------------------*/
         var demo_procedure = {
             timeline: [fixation_cards, practice_cards1, practice_choice1, practice_reward1, fixation_cards, practice_cards2, practice_choice2, practice_reward2],
@@ -900,33 +910,12 @@
 
 
         var instructions_loop = {
-            timeline: [instructions, start_practice_only_cards, demo_procedure, start_instructions_test, instructions_test, check_answers],
+            timeline: [instructions, start_practice_only_cards, demo_procedure, start_instructions_test, instructions_test_for_cards, instructions_test_for_leaves, check_answers],
             loop_function: function () {
                 if (to_repeat == true) {
                     return true;
                 } else {
                     return false;
-                }
-            }
-        }
-
-        var is_reward = {
-            timeline : [exp_reward],
-            conditional_function() {
-                if (manipulation_condition){
-                    var data1 = jsPsych.data.get();
-                    var data2 = data1.last(1);
-                    var data3 = data2.values()[0];
-                
-                    if (data3.is_catch_trial == true){
-                        return false;
-                    } 
-                    else {
-                        return true;
-                    }
-                }
-                else {
-                    return true;
                 }
             }
         }
@@ -941,19 +930,6 @@
             timeline: [start_block, test_procedure_cards, finish_block],
             repetitions: 3
         };
-
-    //    var full_procedure = {
-    //        timeline: function(){
-    //            if (manipulation_condition == true){
-    //                return [preload, instructions_loop, confirm_loop, if_confirm, start_exp_cards, test_blocks]
-    //            }
-    //            else{
-    //                return [preload, instructions_loop, start_exp_cards, test_blocks] //instructions+test takes 180sec 
-    //            }
-    //        }
-  //      }
-//
-        //timeline.push(full_procedure)
 
         var full_procedure_leaves = {
             timeline: [preload, instructions_loop, confirm_loop, if_confirm, start_exp_cards, test_blocks]
@@ -973,23 +949,7 @@
 
         jsPsych.run(timeline);
 
-        /*----------------------------------------------------
-        After experiment
-        ------------------------------------------------------*/
-        /* we don't use it here. we have after_exp
-        var timeline = [];
-        var accuracy = localStorage.accuracy;
-        var bonus = localStorage.bonus;
-        
-        var conclusion = {
-            type: 'html-keyboard-response',
-            stimulus: function () {
-                var feedback_string = '<div style="font-size:20px;">This task is over. Thank you for your participation and see you tomorrow.<br>';
-                return feedback_string
-            }
-        }
-        timeline.push(conclusion)
-        */
+
     </script>
 
 </body>
