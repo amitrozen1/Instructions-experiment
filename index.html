@@ -76,13 +76,13 @@
         /*---------------------------------------------------- 
         Define images
         ------------------------------------------------------*/
-        var manipulation_block_1= [true, false, false, false, true, false, true, false, true, false, false, false, false, true, false, false, false, false,
-         true, false, false, false, false, false, false, false, true, false, true, false, false, false, true, false, false, false, true, false, true,
+        var manipulation_block_1= [true, false, false, false, true, false, true, false, true, false, false, false, false, true, false, true, false, true,
+         false, true, false, false, false, false, false, false, true, false, true, false, false, false, true, false, false, false, true, false, true,
           false, false, true, false, false, true, false, false, false,  false, true]
 
         var manipulation_block_2= [false, true, false, false, false, true, false, false, true, false, false, false, true, false, false, true, false, true, 
         false, true, false, false, false, true, false, false, true, false, false, true, false, false, false, false, false, true, false, false, true, 
-        false, false, false, true, false, false, true, false, true, false, false]
+        false, true, false, true, false, false, true, false, true, false, false]
 
         var manipulation_block_3= [false, false, true,false, false, false, false, false, false, true, false, true, false, true, false, true, false, false, 
         true, false, true, false, false, false, false, false, true, false, false, false, true, false, true, false, false, false, true, false, true, 
@@ -176,32 +176,36 @@
             pages: function() {
                 if (manipulation_condition == true){
                     return ["<p><b><u>Welcome to the leaves game</u></b></p>"
-                    + "<p style='text-align:left'>Your winnings in this game will earn you additional payment bonus for participating in this study."
+                    + "<p style='text-align:left'> Your winnings in this game will earn you additional payment bonus for participating in this study. "
                     + "Even if you don't earn any extra money in the game, you will still receive £2.5 for completing this session of the study."
                     + " However, <b>you can earn up to an extra £0.9 based on your winnings in the game.</b></p>",
     
                 "<p style='text-align:left'> We will now provide instructions for the leaves game. Please read them carefully. <br>"
-                + "You can go back and forth between screens as needed.</p> "
-                + "<p style='text-align:left'>At the end of the instructions, <b>we will ask you to complete a short quiz about them</b>, to ensure that everything is well understood.</p>",
+                + "You can go back and forth between screens as needed.</p> ",
+
+                "<p style='text-align:left'> At the end of the instructions, <b>we will ask you to complete a short quiz about them</b>, to ensure that everything is well understood.</p>",
     
-                "<p style='text-align:left'> In our garden, there is an ancient tree that yields money when its leaves are collected.<br>"
+                "<p style='text-align:left'> In our garden, there is an old tree that gives money when its leaves are collected.<br>"
                 + "The tree is quite large and has many different colored leaves. Below is an example of four leaves, which are very similar to the leaves in the game that you'll be playing.</p>" +
                 "<img class='group' src=" + instructions_images[0] + ">",
     
-                "<p style='text-align:left'> Occasionally, a pair of leaves may fall from the tree (as shown in the example below), and you will need to select one of them.<br> To choose <b>the left leaf press 's'</b> on your keyboard; to choose <b>the right leaf, press 'k'</b>.</p>"
+                "<p style='text-align:left'> Occasionally, a pair of leaves may fall from the tree (as shown in the example below), and you will need to select one of them.<br> For example, if you want to choose <b>the left leaf press 's'</b> on your keyboard. If you want to choose <b>the right leaf, press 'k'</b>.</p>"
                 + "<img class='example' src=" + instructions_images[1] + ">",
     
-                "<p style='text-align:left'>Once you have chosen a leaf, the tree will reward you based on its color. The outcome will be shown in the center of the screen, as seen below.<br><br>"
-                + "<b>Winning in the game depends greatly on the color of the leaf you select. </b>"
-                + "Some leaf colors are more valuable than others, as the tree prefers certain colors over others.</p>"
+                "<p style='text-align:left'> Once you have chosen a leaf, the tree will either reward you with a golden coin or give you nothing. The outcome will be shown in the center of the screen, as seen below.</p><br><br>"
                 + "<br> <img class='example' src=" + instructions_images[2] + ">",
-    
-                "<p style='text-align:left'>Your task is to determine which falling leaf is the best to select at any given time and choose it."
-                +"<br><br> <b>Please note that the chances of winning are independent</b> and learning about one leaf does not provide information about the other leaves.</p>",
 
-                "<p style='text-align:left'>Please note that in the actual game, there will be rounds where cards with shapes will appear instead of leaves.<br> During these rounds, you will need to choose one of the cards, but <b>you will not receive a reward for your choice</b>.</p>",
+                "<p style='text-align:left'> The golden coins you earn will be exchanged to bonus money at the end of the experiment.</p>",
+
+                "<p style='text-align:left'> <b>Winning in the game depends greatly on the color of the leaf you select. </b>"
+                + "Certain leaf colors are worth more than others because the tree likes some colors more than the rest.</p>",
     
-                "<p style='text-align:left'><u>There are a few things to keep in mind while playing the game:</u><br>"
+                "<p style='text-align:left'> Your task is to determine which colors of falling leaves are the best to select at any given time and choose them. "
+                +"<b>Please note that the chances of winning are independent</b> and learning about one leaf does not provide information about the other leaves.</p>",
+
+                "<p style='text-align:left'> Please note that in the actual game, there will be rounds where cards with shapes will appear instead of leaves.<br> During these rounds, you will need to choose one of the cards, but <b>you will not receive a reward for your choice</b>.</p>",
+    
+                "<p style='text-align:left'> <u>There are a few things to keep in mind while playing the game:</u><br>"
                 + "1. Over time, the colors that the tree prefers may change, which means that <b>the value of a leaf may change throughout the game.</b>"
                 + "<br><br>2. <b>Winning in the game depends on the color of the chosen leaf.</b>.<br> Today, it is a stormy day with strong winds, so the wind may blow a leaf to the left or right, but the position of the leaf doesn't affect your odds of winning. Additionally, the key you use to pick up the leaf has no effect on your odds of winning.<br><br>"
                 + " 3. <b>The possibility of winning money from a certain leaf is not related to the other leaves</b>, so you can't learn about one leaf from the money rewards you receive for the others."
