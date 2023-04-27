@@ -851,7 +851,7 @@
             timeline : [exp_reward],
             conditional_function() {
                 if (manipulation_condition){
-                    var data1 = jsPsych.data.get().last(1).values()[0];
+                    var data = jsPsych.data.get().last(1).values()[0];
                     if (data.is_catch_trial == true){
                         return false;
                     } 
