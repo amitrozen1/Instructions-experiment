@@ -192,24 +192,28 @@
                 "<p style='text-align:left'> Occasionally, a pair of leaves may fall from the tree (as shown in the example below), and you will need to select one of them.<br> For example, if you want to choose <b>the left leaf press 's'</b> on your keyboard. If you want to choose <b>the right leaf, press 'k'</b>.</p>"
                 + "<img class='example' src=" + instructions_images[1] + ">",
     
-                "<p style='text-align:left'> Once you have chosen a leaf, the tree will either reward you with a golden coin or give you nothing. The outcome will be shown in the center of the screen, as seen below.</p><br><br>"
-                + "<br> <img class='example' src=" + instructions_images[2] + ">",
+                "<p style='text-align:left'> Once you have chosen a leaf, the tree will either reward you with a golden coin or give you nothing. The outcome will be shown in the center of the screen, as seen below.</p><br>"
+                + "<img class='example' src=" + instructions_images[2] + ">",
 
                 "<p style='text-align:left'> The golden coins you earn will be exchanged to bonus money at the end of the experiment.</p>",
 
-                "<p style='text-align:left'> <b>Winning in the game depends greatly on the color of the leaf you select. </b>"
-                + "Certain leaf colors are worth more than others because the tree likes some colors more than the rest.</p>",
-    
-                "<p style='text-align:left'> Your task is to determine which colors of falling leaves are the best to select at any given time and choose them. "
-                +"<b>Please note that the chances of winning are independent</b> and learning about one leaf does not provide information about the other leaves.</p>",
+                "<p style='text-align:left'> <b>Winning in the game depends greatly on the color of the leaf you select</b>."
+                + " Certain leaf colors are worth more than others because the tree likes some colors more than the rest.</p>",
 
-                "<p style='text-align:left'> Please note that in the actual game, there will be rounds where cards with shapes will appear instead of leaves.<br> During these rounds, you will need to choose one of the cards, but <b>you will not receive a reward for your choice</b>.</p>",
+                "<p style='text-align:left'>As time passes, the tree's preferred leaf colors may change, which means that <b>the value of a leaf may change throughout the game</b>.</p>",
+
+                "<p style='text-align:left'>In addition, please keep in mind that today is a stormy day with strong winds, which may cause the leaves to be blown to the left or right. However, it's important to note that <b>the position of the leaves won't affect your odds of winning</b>. Furthermore, <b>the key you use</b> to pick up the leaves won't have any impact on your chances of winning.",
+    
+                "<p style='text-align:left'> Your task is to figure out which colors of falling leaves are the best to select at any given time and pick them. "
+                +"It's important to remember that <b>the chances of winning with each color leaf are not related to each other</b> and learning about one leaf does not provide information about the other leaves.</p>",
+
+                "<p style='text-align:left'> Please note that the magical tree also drops magical shapes randomly, for which <b>it doesn't offer an immediate reward</b>.<br> At the end of each game part, you will find out how much you have earned for all the shapes rounds in that game part.</p>",
     
                 "<p style='text-align:left'> <u>There are a few things to keep in mind while playing the game:</u><br>"
-                + "1. Over time, the colors that the tree prefers may change, which means that <b>the value of a leaf may change throughout the game.</b>"
-                + "<br><br>2. <b>Winning in the game depends on the color of the chosen leaf.</b>.<br> Today, it is a stormy day with strong winds, so the wind may blow a leaf to the left or right, but the position of the leaf doesn't affect your odds of winning. Additionally, the key you use to pick up the leaf has no effect on your odds of winning.<br><br>"
+                + "1. The colors that the tree prefers may change over time, which means that <b>the value of a leaf may change throughout the game.</b>"
+                + "<br><br>2. <b>Winning in the game depends on the color of the chosen leaf</b>.<br> The position of the leaves due to strong winds will not affect your chances of winning, nor will the key you use to collect the leaves.<br><br>"
                 + " 3. <b>The possibility of winning money from a certain leaf is not related to the other leaves</b>, so you can't learn about one leaf from the money rewards you receive for the others."
-                + " <br><br><u>Please respond as quickly and accurately as possible.</u><br><br></p>"]
+                + " <br><br><u>Please do your best to respond as fast as you can while trying to earn as many coins as you can</u><br><br></p>"]
                 }
 
                 else{
@@ -336,10 +340,11 @@
                 }
             },
             type: jsPsychInstructions,
-            pages: ["<p style='text-align:left'> Before starting the real game, we would like to test you on a real game step to ensure you understand the essence of the game.",
+            pages: ["<p style='text-align:left'> Before starting the real game, we would like to test you on a real game step to ensure you understand the essence of the game.</p>",
 
-            "<p style='text-align:left'> You will begin by observing a single game step without needing to respond.<br> Two leaves will be displayed for a few seconds, after which one will be selected and an outcome will be displayed accordingly.</p> <br>"
-            + "<p style='text-align:left'>After witnessing the choice, a new pair of leaves will be presented to you. You will be required to choose <b>the best course of action</b> in your opinion from a set of options that will be presented to you.</p> ",],
+            "<p style='text-align:left'> You will begin by observing a single game step without needing to respond.<br> Two leaves will be displayed for a few seconds, after which one will be selected and an outcome will be displayed accordingly.</p>",
+
+            "<p style='text-align:left'>After seeing the decision, a new pair of leaves will be presented to you.<br> Then, you'll have to pick what you think is the best thing to do from a list of options.</p>",],
             show_clickable_nav: true
         };
         
@@ -400,7 +405,7 @@
                 }
             },
             type: jsPsychInstructions,
-            pages: ["<p style='text-align:left'>Next, you will be presented with a pair of leaves.<br> Please consider them carefully and select the best course of action from the following options:<br>"
+            pages: ["<p style='text-align:left'>Next, you will be presented with a pair of leaves.<br><br> Please consider them carefully and select the most logical option, in your opinion, from the following choices:<br><br>"
                 + "1. left leaf<br>"
                 + "2. right leaf<br>"
                 + "3. It doesn't matter because they are both equal to me<br></p>",],
@@ -426,7 +431,7 @@
         var confirm_test = {
             type: jsPsychSurveyMultiChoice,
             questions: [
-                { prompt: "Which card do you think is the best choice, considering the card choice you have witnessed before?", name: 'confirmation_question', correct: "It doesn't matter because they are both equal to me", options: confirm_options, required: true } ],
+                { prompt: "Which leaf do you think is the best choice, considering the card choice you have witnessed before?", name: 'confirmation_question', correct: "It doesn't matter because they are both equal to me", options: confirm_options, required: true } ],
                 //preamble: function () {
                  //   left_with_tag = "<img class='card_left' src='" + left_card + "'>"
                 //    right_with_tag = "<img class='card_right' src='" + right_card + "'>"
@@ -438,14 +443,14 @@
             type: jsPsychHtmlButtonResponse,
             stimulus: "<p>Sorry. You made a mistake.<br><br>"
                 + "Please note that <b> only the leaf colors are related to your chances of winning, </b>and the location of the leaf and the response key you used to select it do not influence the chances of winning a coin.<br>"
-                + "Please try again.",
-            choices: ['Re- answer the question']
+                + "<br>Please try again.",
+            choices: ['Re-answer the question']
         }
 
         var if_confirm = {
             type: jsPsychHtmlButtonResponse,
-            stimulus: "<p>Correct, Good job!<br><br>"
-                + "You are now ready to start the real game. <br> If you haven't seen these leaves before, please pick one at random, because neither the leaf's placement nor the answer key you used to select it affects your odds of winning.<br>",
+            stimulus: "<p><b>Correct</b>, Good job!<br><br>"
+                + "If you haven't seen these leaves before, please pick one at random, because neither the leaf's placement nor the answer key you used to select it affects your odds of winning.<br><br> You are now ready to start the real game.",
             choices: ['Begin the game']
         }
 
