@@ -177,8 +177,8 @@
                 if (manipulation_condition == true){
                     return ["<p><b><u>Welcome to the leaves game</u></b></p>"
                     + "<p style='text-align:left'> Your winnings in this game will earn you additional payment bonus for participating in this study. "
-                    + "Even if you don't earn any extra money in the game, you will still receive £2.5 for completing this session of the study."
-                    + " However, <b>you can earn up to an extra £0.9 based on your winnings in the game.</b></p>",
+                    + "Even if you don't earn any extra money in the game, you will still receive £2.7 for completing this session of the study."
+                    + " However, <b>you can earn up to an extra £0.5 based on your winnings in the game.</b></p>",
     
                 "<p style='text-align:left'> We will now provide instructions for the leaves game. Please read them carefully. <br>"
                 + "You can go back and forth between screens as needed.</p> ",
@@ -207,7 +207,7 @@
                 "<p style='text-align:left'> Your task is to figure out which colors of falling leaves are the best to select at any given time and pick them. "
                 +"It's important to remember that <b>the chances of winning with each color leaf are not related to each other</b> and learning about one leaf does not provide information about the other leaves.</p>",
 
-                "<p style='text-align:left'> Please note that the magical tree also drops magical shapes randomly, for which <b>it doesn't offer an immediate reward</b>.<br> At the end of each game part, you will find out how much you have earned for all the shapes rounds in that game part.</p>",
+                "<p style='text-align:left'> Please note that the magical tree also drops magical shapes randomly. Once a shape is selected, the tree randomly chooses whether or not the selected shape will receive a reward, but <b>it doesn't offer an immediate reward</b>.<br> At the end of each game part, you will find out how much you have earned for all the shapes rounds in that game part.</p>",
     
                 "<p style='text-align:left'> <u>There are a few things to keep in mind while playing the game:</u><br>"
                 + "1. The colors that the tree prefers may change over time, which means that <b>the value of a leaf may change throughout the game.</b>"
@@ -354,7 +354,7 @@
                 return draw_show_cards(images_for_block_start())
             },
             choices: "NO_KEYS",
-            trial_duration: 1500,
+            trial_duration: 2000,
             data: { phase: 'understanding confirmation', trial_name: 'cards1', trial_num: function () { return current_cards_practice_trial } },
 
         }
@@ -372,7 +372,7 @@
                 return card_to_show + fixation
             },
             choices: "NO_KEYS",
-            trial_duration: 800,
+            trial_duration: 900,
             data: { phase: 'understanding confirmation', trial_name: 'choice1', trial_num: function () { return current_cards_practice_trial } },
             on_finish: function (data) {
                 data.key_selected = selected
@@ -914,7 +914,7 @@
         ------------------------------------------------------*/
         var demo_procedure = {
             timeline: [fixation_cards, practice_cards1, practice_choice1, practice_reward1, fixation_cards, practice_cards2, practice_choice2, practice_reward2],
-            repetitions: 1 //demo procedure takes 2*(900+6000+500+750) = 17 sec
+            repetitions: 1 //demo procedure takes 2*(900+6000+500+750) = 16.3 sec
         }
     
         var confirm_loop = {
@@ -926,7 +926,7 @@
                     return false;
                 }
             }
-        } // confirm loop takes about 60-90 sec
+        } // confirm loop takes confirm_instructions_cards + 2000 + 900 + 900 + confirm_instructions_before_question + 4000 + confirm_test = 60000+2000+1800+30000+4000+20000= about 118 sec
 
 
         var instructions_loop = {
@@ -938,7 +938,7 @@
                     return false;
                 }
             }
-        } //instructions + test takes about 300-330 sec
+        } //instructions + test takes about 7-8 min
 
         var test_procedure_cards = {
             timeline: [fixation_cards, exp_cards, exp_choice, is_reward, finish_trial],
@@ -949,15 +949,15 @@
         var test_blocks = {
             timeline: [start_block, test_procedure_cards, finish_block],
             repetitions: 3
-        }; // every block takes 1000 + 427.5 + 1000 = 2427.5 sec, 3 blocks = 7,282.5 sec
+        }; // every block takes 1000 + 427500 + 1000 = 429.5~ 430 sec, 3 blocks = 1290 sec
 
         var full_procedure_leaves = {
             timeline: [preload, instructions_loop, confirm_loop, if_confirm, start_exp_cards, test_blocks]
-        } // 300 + 90 + 1000 + 7,282.5 = 8672.5 sec
+        } // 480 + 118 + 1 + 1290 = 1889~ 1900 sec
 
         var full_procedure_cards = {
             timeline: [preload, instructions_loop, start_exp_cards, test_blocks]
-        } // 300 + 1000 + 7,282.5 = 8582.5 sec
+        } // 480 + 1 + 1290 = 1771 sec
 
         
         /*---------------------------------------------------- 
