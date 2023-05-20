@@ -56,7 +56,6 @@
         var root = document.documentElement;
         var vis_angle_px = 105
 
-        //---------------------------------------------------------------------------------------------
         root.style.setProperty('--left_card', window.screen.width / 2 - 2 * vis_angle_px + "px");
         root.style.setProperty('--right_card', window.screen.width / 2 - 2 * vis_angle_px + "px");
         root.style.setProperty('--top_card', window.screen.height / 2 - 90 + "px");
@@ -64,17 +63,9 @@
         root.style.setProperty('--left_reward', window.screen.width / 2 + "px");
 
         /*---------------------------------------------------- 
-        Card game starts
+        Define experiment conditions
         ------------------------------------------------------*/
-        /*full screen */
-        var enter_fullscreen = {
-            type: jsPsychFullscreen,
-            message: '<p>This experiment will be in fullscreen mode. <br> <b>Please make sure your browser is on 100% zoom, and your keyboard is on the English language.</b></p>',
-            fullscreen_mode: true
-        }
-        /*---------------------------------------------------- 
-        Define images
-        ------------------------------------------------------*/
+        
         var manipulation_block_1= [true, false, false, false, true, false, true, false, true, false, false, false, false, true, false, true, false, true,
          false, true, false, false, false, false, false, false, true, false, true, false, false, false, true, false, false, false, true, false, true,
           false, false, true, false, false, true, false, false, false,  false, true]
@@ -128,6 +119,10 @@
             var exp_blocks = jsPsych.randomization.sampleWithoutReplacement([manipulation_block_1, manipulation_block_2, manipulation_block_3, manipulation_block_4, manipulation_block_5, manipulation_block_6, manipulation_block_7, manipulation_block_8], 4)
         }
 
+        /*---------------------------------------------------- 
+        Define images
+        ------------------------------------------------------*/
+
         var practice_leaves_images = ['images/practice/1p.jpg', 'images/practice/2p.jpg', 'images/practice/3p.jpg', 'images/practice/4p.jpg']
         var practice_deck_images = ['images/card deck 1/1.jpg', 'images/card deck 1/2.jpg', 'images/card deck 1/3.jpg', 'images/card deck 1/4.jpg']
         var test_leaves_images = ['images/exp1/1.jpg', 'images/exp1/2.jpg', 'images/exp1/3.jpg', 'images/exp1/4.jpg', 'images/exp2/5.jpg', 'images/exp2/6.jpg',
@@ -155,7 +150,9 @@
         'images/surprise box/new_111.jpg' , 'images/surprise box/new_112.jpg' , 'images/surprise box/new_113.jpg' , 'images/surprise box/new_114.jpg' , 'images/surprise box/new_115.jpg' , 'images/surprise box/new_116.jpg' , 'images/surprise box/new_117.jpg' , 'images/surprise box/new_118.jpg' , 'images/surprise box/new_119.jpg' , 'images/surprise box/new_120.jpg' , 
         'images/surprise box/new_121.jpg' , 'images/surprise box/new_122.jpg' , 'images/surprise box/new_123.jpg' , 'images/surprise box/new_124.jpg' , 'images/surprise box/new_125.jpg' , 'images/surprise box/new_126.jpg' , 'images/surprise box/new_127.jpg' , 'images/surprise box/new_128.jpg' , 'images/surprise box/new_129.jpg' , 'images/surprise box/new_130.jpg' , 
         'images/surprise box/new_131.jpg']
+        
         catch_trial_images = jsPsych.randomization.repeat(catch_trial_images, 1) //shuffles the order
+        
         var preload = {
             type: jsPsychPreload,
             images: practice_leaves_images, practice_deck_images, test_leaves_images, test_deck_images, reward_images, instructions_images, catch_trial_images
@@ -164,6 +161,13 @@
         /*---------------------------------------------------- 
         Start instructions
         ------------------------------------------------------*/
+
+        /*full screen */
+        var enter_fullscreen = {
+            type: jsPsychFullscreen,
+            message: '<p>This experiment will be in fullscreen mode. <br> <b>Please make sure your browser is on 100% zoom, and your keyboard is on the English language.</b></p>',
+            fullscreen_mode: true
+        }
 
         var instructions = {
             on_start: function () {
@@ -250,9 +254,9 @@
                 + " <br><br><u>Please do your best to respond as fast and accurate as you can.</u><br><br>"]
                 }
             },
-        show_clickable_nav: true,
-        data: { is_manipulation: function () { return manipulation_condition } },
-    };
+            show_clickable_nav: true,
+            data: { is_manipulation: function () { return manipulation_condition } },
+        };
     
         
         var start_instructions_test = {
@@ -263,41 +267,40 @@
             type: jsPsychHtmlKeyboardResponse,
             stimulus: "<p> <br><br> You will now take a brief quiz to ensure that you understood the instructions. If you make a mistake, you will need to review the instructions again. <br><br> <b> Press any key to continue</b></p>"
         }
-        var Q1_2_options = ["2", "4", "6"];
-        var Q3_options = ["Click on it", "Press the LEFT or RIGHT arrow keys", "Press the ‘S’ or ‘K’ key with your LEFT or RIGHT hand."];
-        var Q5_6_options = ["True", "False"];
-        var Q7_options = ["The goal is to learn which card is better", "The goal is to pick a card as quickly as possible"]
-        var Q8_options = ["True", "False"];
-        var Q9_options = ["True - the response keys are related to the winning chances", "False - you won't win more or less using RIGHT or LEFT response keys. Only the cards are related to your chance of winning."];
 
-        var Q7_options_leaves = ["The goal is to learn which leaf color is more valuable.", "The goal is to pick a leaf as quickly as possible"]
-        var Q9_options_leaves = ["True - the response keys are related to the winning chances", "False - you won't win more or less using RIGHT or LEFT response keys. Only the leaf colors are related to your chance of winning."];
+        var numbers_options = ["2", "4", "6"];
+        var pressing_options = ["Click on it", "Press the LEFT or RIGHT arrow keys", "Press the ‘S’ or ‘K’ key with your LEFT or RIGHT hand."];
+        var true_false_options = ["True", "False"];
+        var cards_goal_options = ["The goal is to learn which card is better", "The goal is to pick a card as quickly as possible"]
+        var card_keys_options = ["True - the response keys are related to the winning chances", "False - you won't win more or less using RIGHT or LEFT response keys. Only the cards are related to your chance of winning."];
+        var leaves_goal_options = ["The goal is to learn which leaf color is more valuable.", "The goal is to pick a leaf as quickly as possible"]
+        var leaves_keys_options = ["True - the response keys are related to the winning chances", "False - you won't win more or less using RIGHT or LEFT response keys. Only the leaf colors are related to your chance of winning."];
 
         var instructions_test_cards = {
             type: jsPsychSurveyMultiChoice,
             questions: [
-                { prompt: "What is the size of a card deck?", name: 'deck_size', correct: '4', options: Q1_2_options, required: true },
-                { prompt: "How many cards are presented on each step?", name: 'cards_step', correct: '2', options: Q1_2_options, required: true },
-                { prompt: "How do you choose a card?", name: 'choose_card', correct: 'Press the ‘S’ or ‘K’ key with your LEFT or RIGHT hand.', options: Q3_options, required: true },
-                { prompt: "Some cards are better than others.", name: 'better_cards', correct: 'True', options: Q5_6_options, required: true },
-                { prompt: "The value of a card can change during the game.", name: 'value_change', correct: 'True', options: Q5_6_options, required: true },
-                { prompt: "What is the goal of the game?", name: 'game_goal', correct: "The goal is to learn which card is better", options: Q7_options, required: true },
-                { prompt: "If one card leads you to more money, it means the other cards will probably lead you to less money.", name: 'value_independence', correct: 'False', options: Q8_options, required: true },
-                { prompt: "Using the RIGHT response key instead of the LEFT key increases your chances of winning.", name: 'location_value', correct: "False - you won't win more or less using RIGHT or LEFT response keys. Only the cards are related to your chance of winning.", options: Q9_options, required: true },
+                { prompt: "What is the size of a card deck?", name: 'deck_size', correct: '4', options: numbers_options, required: true },
+                { prompt: "How many cards are presented on each step?", name: 'cards_step', correct: '2', options: numbers_options, required: true },
+                { prompt: "How do you choose a card?", name: 'choose_card', correct: 'Press the ‘S’ or ‘K’ key with your LEFT or RIGHT hand.', options: pressing_options, required: true },
+                { prompt: "Some cards are better than others.", name: 'better_cards', correct: 'True', options: true_false_options, required: true },
+                { prompt: "The value of a card can change during the game.", name: 'value_change', correct: 'True', options: true_false_options, required: true },
+                { prompt: "What is the goal of the game?", name: 'game_goal', correct: "The goal is to learn which card is better", options: cards_goal_options, required: true },
+                { prompt: "If one card leads you to more money, it means the other cards will probably lead you to less money.", name: 'value_independence', correct: 'False', options: true_false_options, required: true },
+                { prompt: "Using the RIGHT response key instead of the LEFT key increases your chances of winning.", name: 'location_value', correct: "False - you won't win more or less using RIGHT or LEFT response keys. Only the cards are related to your chance of winning.", options: card_keys_options, required: true },
             ]
         };
         
         var instructions_test_leaves = {
             type: jsPsychSurveyMultiChoice,
             questions: [
-            { prompt: "How many leaves fall down from the tree each time?", name: 'leaves_step', correct: '2', options: Q1_2_options, required: true },
-            { prompt: "How do you pick up a leaf?", name: 'choose_leaf', correct: 'Press the ‘S’ or ‘K’ key with your LEFT or RIGHT hand.', options: Q3_options, required: true },
-            { prompt: "Some leaf colors are better than others.", name: 'better_leaves', correct: 'True', options: Q5_6_options, required: true },
-            { prompt: "The value of a leaf can change during the game.", name: 'leaf_value_change', correct: 'True', options: Q5_6_options, required: true },
-            { prompt: "What is the goal of the game?", name: 'leaves_game_goal', correct: "The goal is to learn which leaf color is more valuable.", options: Q7_options_leaves, required: true },
-            { prompt: "In rounds that feature shape cards rather than leaves, it's possible to earn money by picking the right card.", name: 'reward_catch_trial', correct: "False", options: Q5_6_options, required: true },
-            { prompt: "If one leaf leads you to more money, it means the other leaves will probably lead you to less money.", name: 'leaves_value_independence', correct: 'False', options: Q8_options, required: true },
-            { prompt: "Using the RIGHT response key instead of the LEFT key increases your chances of winning.", name: 'leaves_location_value', correct: "False - you won't win more or less using RIGHT or LEFT response keys. Only the leaf colors are related to your chance of winning.", options: Q9_options_leaves, required: true },
+            { prompt: "How many fallen leaves will you find each time?", name: 'leaves_step', correct: '2', options: numbers_options, required: true },
+            { prompt: "How do you choose a leaf?", name: 'choose_leaf', correct: 'Press the ‘S’ or ‘K’ key with your LEFT or RIGHT hand.', options: pressing_options, required: true },
+            { prompt: "Some leaf colors are better than others.", name: 'better_leaves', correct: 'True', options: true_false_options, required: true },
+            { prompt: "The value of a leaf can change during the game.", name: 'leaf_value_change', correct: 'True', options: true_false_options, required: true },
+            { prompt: "What is the goal of the game?", name: 'leaves_game_goal', correct: "The goal is to learn which leaf color is more valuable.", options: leaves_goal_options, required: true },
+            { prompt: "In rounds that feature shape cards rather than leaves, it's possible to earn money by picking the right card.", name: 'reward_catch_trial', correct: "False", options: true_false_options, required: true },
+            { prompt: "If one leaf leads you to more money, it means the other leaves will probably lead you to less money.", name: 'leaves_value_independence', correct: 'False', options: true_false_options, required: true },
+            { prompt: "Using the RIGHT response key instead of the LEFT key increases your chances of winning.", name: 'leaves_location_value', correct: "False - you won't win more or less using RIGHT or LEFT response keys. Only the leaf colors are related to your chance of winning.", options: leaves_keys_options, required: true },
         ]
         };
 
