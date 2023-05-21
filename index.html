@@ -180,7 +180,7 @@
                 if (manipulation_condition == true){
                     return ["<p><b><u>Welcome to the leaves game</u></b></p>"
                     + "<p style='text-align:left'> Your winnings in this game will earn you additional payment bonus for participating in this study. "
-                    + "Even if you don't earn any extra money in the game, you will still receive £3.2 for completing this session of the study."
+                    + "Even if you don't earn any extra money in the game, you will still receive £3.4 for completing this session of the study."
                     + " However, <b>you can earn up to an extra £0.5 based on your winnings in the game.</b></p>",
     
                 "<p style='text-align:left'> We will now provide instructions for the leaves game. Please read them carefully. <br>"
@@ -229,7 +229,7 @@
                 else{
                     return ["<p><b><u>Welcome to the card game</u></b></p>"
                     + "<p style='text-align:left'>Your winnings in this game will earn you additional payment bonus for the study."
-                    + " If no extra money will be earned in the card game, you will still get £2.85 for completing this session of the study."
+                    + " If no extra money will be earned in the card game, you will still get £2.9 for completing this session of the study."
                     + " However, <b>you can gain up to an extra £0.9 based on winnings in the game.</b></p>",
         
                 "<p style='text-align:left'> We will now provide instructions regarding the card game. Please read them carefully. <br>"
@@ -351,7 +351,7 @@
             type: jsPsychInstructions,
             pages: ["<p style='text-align:left'> Before starting the real game, we would like to test you on a real game step to ensure you understand the essence of the game.</p>",
 
-            "<p style='text-align:left'> You will begin by observing a single game step without needing to respond.<br> Two leaves will be displayed for a few seconds, after which one will be selected and an outcome will be displayed accordingly.</p>",
+            "<p style='text-align:left'> You will begin by observing a single game step without needing to respond.<br> Two leaves will be displayed for a few seconds, after which one will be selected, and an outcome will be displayed accordingly.</p>",
 
             "<p style='text-align:left'>After seeing the decision, a new pair of leaves will be presented to you.<br> Then, you'll have to pick what you think is the best thing to do from a list of options.</p>",],
             show_clickable_nav: true
@@ -952,7 +952,8 @@
                     return false;
                 }
             }
-        } // confirm loop takes confirm_instructions_cards + 2000 + 900 + 900 + confirm_instructions_before_question + 4000 + confirm_test = 60000+2000+1800+30000+4000+20000= about 118 sec
+        } 
+        // 1 min + 2 sec +0.9 sec + 0.9 sec + 0.4 min + 4 sec + 0.3 min + 0.5 min = 2.2 min + 7.8 sec = 139.8 sec~ 140 sec
 
 
         var instructions_loop = {
@@ -964,8 +965,8 @@
                     return false;
                 }
             }
-        } //instructions + test takes about 8 min, with demo 497.3 sec
-        // regular instructions + test takes 5 min, with demo 317.3 sec
+        } //manipulation: 7 min+ 1 sec + 17.3 sec + 2.5 min = 588.3 sec=
+        // regular: 4 min+ 1 sec + 17.3 sec + 2 min = 378.3 sec
 
         var test_procedure_cards = {
             timeline: [fixation_cards, exp_cards, exp_choice, is_reward, finish_trial],
@@ -980,11 +981,11 @@
 
         var full_procedure_leaves = {
             timeline: [preload, instructions_loop, confirm_loop, if_confirm, start_exp_cards, test_blocks]
-        } // 497.3 + 118 + 1 + 1738 = 2354.3= 39.238 min
+        } // 588 + 140 + 1 + 1738 = 2467 = 41.11 min
 
         var full_procedure_cards = {
             timeline: [preload, instructions_loop, start_exp_cards, test_blocks]
-        } // 317.3 + 1 + 1738 = 2056.3 sec= 34.27
+        } // 378 + 1 + 1738 = 2117 sec= 35.28 min
 
         
         /*---------------------------------------------------- 
