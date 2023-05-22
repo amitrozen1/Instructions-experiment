@@ -27,12 +27,6 @@
 
         var jsPsych = initJsPsych({
             on_finish: function () {
-                /*calculate bonus */
-                //var number_of_reward1 = jsPsych.data.get().filter({ phase: 'exp', trial_name: 'reward1' }).select('reward').sum()
-                //var number_of_reward2 = jsPsych.data.get().filter({ phase: 'exp', trial_name: 'reward2' }).select('reward').sum()
-                //var bonus = 0.003 * (number_of_reward1 + number_of_reward2)
-                //var bonus_string = bonus.toFixed(2)
-                //localStorage.bonus = bonus_string; //bonus to show
                 /*get data */
                 processed_data = jsPsych.data.get().json()
                 download_csv(jsPsych.data.get().csv())
@@ -269,7 +263,7 @@
         }
 
         var numbers_options = ["2", "4", "6"];
-        var pressing_options = ["Click on it", "Press the LEFT or RIGHT arrow keys", "Press the ‘S’ or ‘K’ key with your LEFT or RIGHT hand."];
+        var pressing_options = ["Click on it", "Press the LEFT or RIGHT arrow keys", "Press the `S` or `K` key with your LEFT or RIGHT hand."];
         var true_false_options = ["True", "False"];
         var cards_goal_options = ["The goal is to learn which card is better", "The goal is to pick a card as quickly as possible"]
         var card_keys_options = ["True - the response keys are related to the winning chances", "False - you won't win more or less using RIGHT or LEFT response keys. Only the cards are related to your chance of winning."];
@@ -281,7 +275,7 @@
             questions: [
                 { prompt: "What is the size of a card deck?", name: 'deck_size', correct: '4', options: numbers_options, required: true },
                 { prompt: "How many cards are presented on each step?", name: 'cards_step', correct: '2', options: numbers_options, required: true },
-                { prompt: "How do you choose a card?", name: 'choose_card', correct: 'Press the ‘S’ or ‘K’ key with your LEFT or RIGHT hand.', options: pressing_options, required: true },
+                { prompt: "How do you choose a card?", name: 'choose_card', correct: 'Press the `S` or `K` key with your LEFT or RIGHT hand.', options: pressing_options, required: true },
                 { prompt: "Some cards are better than others.", name: 'better_cards', correct: 'True', options: true_false_options, required: true },
                 { prompt: "The value of a card can change during the game.", name: 'value_change', correct: 'True', options: true_false_options, required: true },
                 { prompt: "What is the goal of the game?", name: 'game_goal', correct: "The goal is to learn which card is better", options: cards_goal_options, required: true },
@@ -294,7 +288,7 @@
             type: jsPsychSurveyMultiChoice,
             questions: [
             { prompt: "How many fallen leaves will you find each time?", name: 'leaves_step', correct: '2', options: numbers_options, required: true },
-            { prompt: "How do you choose a leaf?", name: 'choose_leaf', correct: 'Press the ‘S’ or ‘K’ key with your LEFT or RIGHT hand.', options: pressing_options, required: true },
+            { prompt: "How do you choose a leaf?", name: 'choose_leaf', correct: 'Press the `S` or `K` key with your LEFT or RIGHT hand.', options: pressing_options, required: true },
             { prompt: "Some leaf colors are better than others.", name: 'better_leaves', correct: 'True', options: true_false_options, required: true },
             { prompt: "The value of a leaf can change during the game.", name: 'leaf_value_change', correct: 'True', options: true_false_options, required: true },
             { prompt: "What is the goal of the game?", name: 'leaves_game_goal', correct: "The goal is to learn which leaf color is more valuable.", options: leaves_goal_options, required: true },
@@ -307,7 +301,7 @@
         var if_trial = {
             type: jsPsychHtmlButtonResponse,
             stimulus: "<p>Sorry. You made a mistake.<br>"
-                + "Let’s go back to the instructions. "
+                + "Let`s go back to the instructions. "
                 + "Please read them carefully before submitting your answers. <br>"
                 + "Thank you!",
             choices: ['Back to instructions']
@@ -441,11 +435,6 @@
             type: jsPsychSurveyMultiChoice,
             questions: [
                 { prompt: "Which leaf do you think is the best choice, considering the card choice you have witnessed before?", name: 'confirmation_question', correct: "It doesn't matter because they are both equal to me", options: confirm_options, required: true } ],
-                //preamble: function () {
-                 //   left_with_tag = "<img class='card_left' src='" + left_card + "'>"
-                //    right_with_tag = "<img class='card_right' src='" + right_card + "'>"
-                //    return '<div style="position: absolute; text-align: center; left: 0; right: 0; top: 20%;">' + left_with_tag + right_with_tag + fixation;
-                //},
         };
 
         var if_not_confirm = {
@@ -525,7 +514,7 @@
             else {
                 selected = -1
                 reward = 0
-                return '<div style="font-size:40px;">wrong key!</div><br><br><div style="font-size:20px;">Please use the ‘K’ and ‘S’ keys to select the left or right card respectively. </div>'
+                return '<div style="font-size:40px;">wrong key!</div><br><br><div style="font-size:20px;">Please use the `K` and `S` keys to select the left or right card respectively. </div>'
             }
             return card_to_show + fixation
         }
@@ -543,7 +532,7 @@
                 return '<div style="font-size:40px;">Please respond faster!</div>'
             }
             else {
-                return '<div style="font-size:40px;">wrong key!</div><br><br><div style="font-size:20px;">Please use the ‘K’ and ‘S’ keys to select the left or right card respectively. </div>'
+                return '<div style="font-size:40px;">wrong key!</div><br><br><div style="font-size:20px;">Please use the `K` and `S` keys to select the left or right card respectively. </div>'
             }
             card_selected = jsPsych.data.getLastTrialData().values()[0].card_selected 
             prob_reward = FB_matrix[card_selected][current_trial_num]; 
@@ -651,7 +640,6 @@
             type: jsPsychHtmlKeyboardResponse,
             stimulus: function () {
                 if (manipulation_condition == true){
-
                     return draw_show_cards(practice_leaves_images)
                 }
                 else{
@@ -799,8 +787,8 @@
                 }
                 else{
                     return '<p><b><u>Test block ' + (block + 1) + ' out of ' + (blocks + 1) + '</u></b></p>' + '<p style="text-align: left"> You will now start a test block. Below are the four cards that can appear in this round.</p>'
-                    + '<p style="text-align: left">Use the LEFT or RIGHT response keys (‘s’ or ‘k’, in correspondence) to make your selection. <br> Please do your best to win as many coins as possible!<br> </p>'
-                    + '<p style="text-align: left">Remember that: <br> 1) How ‘good’ each card is can change along the round <br> 2) Only the cards (not the response key that was used to select them) predict an outcome <br> 3) The chance that each card will give you money has nothing to do with the other cards </p>'
+                    + '<p style="text-align: left">Use the LEFT or RIGHT response keys (`s` or `k`, in correspondence) to make your selection. <br> Please do your best to win as many coins as possible!<br> </p>'
+                    + '<p style="text-align: left">Remember that: <br> 1) How `good` each card is can change along the round <br> 2) Only the cards (not the response key that was used to select them) predict an outcome <br> 3) The chance that each card will give you money has nothing to do with the other cards </p>'
                     + '<p><b>Press SPACE to start</b></p>'
                     + '<img src="' + images_for_block_start()[0] + '">  ' + '<img src="' + images_for_block_start()[1] + '">    ' + '<img src="' + images_for_block_start()[2]
                     + '">    ' + '<img src="' + images_for_block_start()[3] + '">  '
